@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+:root {
+    --primary-color-light-2: #4587ad;
+    --primary-color-light-1: #3b7393;
+    --primary-color: #315f7a;
+    --primary-color-dark-1: #254b60;
+    --primary-color-dark-2: #1c3747;
+    --black: #292929;
+    --gray-1: #2E2E2E;
+    --gray-2: #333333;
+    --light-gray: #b4b4b4;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--black);
+    font-family: 'Lexend Exa', sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    color: #ffffff;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+h1 {
+    font-size: 4.209rem;
+    font-weight: 400;
+    line-height: calc(4.209rem * 1.2);
+    color: var(--primary-color);
+}
+
+h2 {
+    font-size: 3.157rem;
+    font-weight: 400;
+    line-height: calc(3.157rem * 1.2);
+}
+
+h3 {
+    font-size: 2.369rem;
+    font-weight: 400;
+    line-height: calc(2.369rem * 1.2);
+}
+
+h4 {
+    font-size: 1.777rem;
+    font-weight: 400;
+    line-height: calc(1.777rem * 1.2);
+}
+
+h5 {
+    font-size: 1.333rem;
+    font-weight: 400;
+    line-height: calc(1.333rem * 1.2);
+}
+
+h6 {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: calc(1rem * 1.2);
+}
+
+p {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: calc(1rem * 1.5);
+}
+
+b {
+    font-weight: 400;
+}
+
+li {
+    font-size: 1rem;
+    font-weight: 300;
+    list-style: none;
+    line-height: calc(1rem * 1.2);
+    padding-bottom: 0.8rem;
+}
+
+small {
+    font-size: 0.75rem;
+    font-weight: 300;
+    line-height: calc(0.75rem * 1.2);
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: var(--primary-color-light-2);
+}
+
+.section {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content {
+    width: 85vw;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.disabled {
+    display: none;
+}
+
+/* ------------------------------ screen effect ----------------------------- */
+
+#pixel-effect {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-image: url("/img/background-pixel-1.png");
+    mix-blend-mode: darken;
+    image-rendering: pixelated;
+    pointer-events: none;
+    z-index: 1001;
+    opacity: 40%;
+}
+
+#effect-btn {
+    position: fixed;
+    right: 0;
+    top: 0;
+    margin: 1rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border-radius: 50%;
+    font-size: 1.333rem;
+}
+
+#effect-btn:hover {
+    color: var(--primary-color-light-2);
+}
+
+/* --------------------------------- buttons -------------------------------- */
+
+.btn-1:hover, .btn-2:hover {
+    cursor: pointer;
+    transition: transform 50ms linear;
+    text-decoration: none;
+}
+
+.btn-1:active, .btn-2:active {
+    transform: scale(90%);
+}
+
+.btn-1 {
+    background-color: var(--gray-1);
+}
+
+.btn-1:hover {
+    background-color: var(--gray-2);
+}
+
+.btn-2 {
+    background-color: var(--gray-2);
+}
+
+.btn-2:hover {
+    background-color: var(--gray-1);
+}
+
+/* --------------------------------- layout --------------------------------- */
+
+.columns {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.col {
+    flex-basis: 0;
+    flex-grow: 1;
+}
+
+/* ---------------------------- navigation header --------------------------- */
+
+#navbar {
+    width: 100vw;
+    font-size: 1.333rem;
+}
+
+#navbar-content {
+    display: flex;
+    flex-direction: row;
+    /* todo ? */
+    justify-content: flex-end;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+#navbar-content a {
+    padding: 0.5rem;
+    border-radius: 5px;
+    margin-right: 1rem;
+}
+
+/* --------------------------------- footer --------------------------------- */
+
+footer {
+    color: #949494;
+    margin-top: auto;
+    padding: 0.5rem;
+}

@@ -1,0 +1,161 @@
+
+#pixel-effect {
+    /* opacity: 100% !important; */
+    /* opacity: 60% !important; */
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+:root {
+    --line-height: 1.125rem;    /* required for javascript */
+}
+
+html {
+    font-size: 1.5rem;
+}
+
+body {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    background-color: #000000;
+}
+
+h1 {
+    font-size: 1.777rem;
+    line-height: 2rem;
+    color: #ffffff;
+}
+
+h2 {
+    font-size: 1.333rem;
+    line-height: 1.5rem;
+    font-weight: 300;
+}
+
+.mono {
+    font-family: 'Share Tech Mono', monospace;
+}
+
+p {
+    line-height: var(--line-height);
+    font-family: 'Share Tech Mono', monospace;
+}
+
+.center {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.bottom {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-evenly;
+}
+
+.dark-black {
+    background-color: #292929;
+}
+
+/* ------------------------------ screen effect ----------------------------- */
+
+#pixel-effect {
+    opacity: 60%;
+}
+
+#vignette {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-image: url('/img/vignette.png');
+    background-size: 100% 100%;
+    mix-blend-mode: darken;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+/* --------------------------------- splash --------------------------------- */
+
+#splash {
+    width: 100vw;
+    height: 100vh;
+    /* background-color: #35437B; */
+    background-color: var(--primary-color);
+}
+
+#splash.dim {
+    opacity: 50%;
+}
+
+#splash .center img {
+    position: absolute;
+    width: 20rem;
+}
+
+#splash .bottom > * {
+    padding: 1.25rem;
+    padding-top: 0;
+}
+
+/* ------------------------------ boot sequence ----------------------------- */
+
+
+#boot-sequence {
+    height: 100%;
+    background-color: var(--black);
+    padding: var(--line-height);
+}
+
+.important {
+    /* color: #7490ff; */
+    color: var(--primary-color-light-2);
+}
+
+.error {
+    color: #ff0000;
+}
+
+/* -------------------------------- animation ------------------------------- */
+
+.spin {
+    animation-name: spin;
+    animation-duration: 6000ms;
+    animation-iteration-count: 0.6;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ------------------------------ media queries ----------------------------- */
+
+@media (max-width: 960px) {
+    #splash .bottom {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    span.time-stamp {
+        display: none;
+    }
+}
