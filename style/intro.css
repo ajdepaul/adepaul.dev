@@ -1,9 +1,3 @@
-
-#pixel-effect {
-    /* opacity: 100% !important; */
-    /* opacity: 60% !important; */
-}
-
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@300;400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
@@ -70,13 +64,23 @@ p {
 /* ------------------------------ screen effect ----------------------------- */
 
 #pixel-effect {
-    opacity: 60%;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    background-image: url("/img/background-pixel.png");
+    mix-blend-mode: darken;
+    image-rendering: pixelated;
+    pointer-events: none;
+    z-index: 1001;
+    opacity: 75%;
 }
 
 #vignette {
     position: fixed;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     left: 0;
     top: 0;
     background-image: url('/img/vignette.png');
@@ -84,6 +88,7 @@ p {
     mix-blend-mode: darken;
     pointer-events: none;
     z-index: 1000;
+    opacity: 60%;
 }
 
 /* --------------------------------- splash --------------------------------- */
@@ -91,7 +96,6 @@ p {
 #splash {
     width: 100vw;
     height: 100vh;
-    /* background-color: #35437B; */
     background-color: var(--primary-color);
 }
 
@@ -99,13 +103,13 @@ p {
     opacity: 50%;
 }
 
-#splash .center img {
+#hexagon {
     position: absolute;
-    width: 20rem;
+    width: 475px;
 }
 
 #splash .bottom > * {
-    padding: 1.25rem;
+    padding: 30px;
     padding-top: 0;
 }
 
@@ -119,8 +123,7 @@ p {
 }
 
 .important {
-    /* color: #7490ff; */
-    color: var(--primary-color-light-2);
+    color: var(--primary-color-light);
 }
 
 .error {
@@ -157,5 +160,25 @@ p {
 
     span.time-stamp {
         display: none;
+    }
+
+    #splash .bottom > * {
+        padding-bottom: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    #hexagon {
+        position: absolute;
+        width: 320px;
+    }
+
+    #splash .center h1 {
+        font-size: 1.333rem;
+        line-height: 2rem;
+    }
+    
+    #splash .center h2 {
+        font-size: 1rem;
     }
 }

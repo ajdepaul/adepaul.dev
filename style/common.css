@@ -2,11 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
 :root {
-    --primary-color-light-2: #4587ad;
-    --primary-color-light-1: #3b7393;
-    --primary-color: #315f7a;
-    --primary-color-dark-1: #254b60;
-    --primary-color-dark-2: #1c3747;
+    --primary-color-light: #59afe0;
+    --primary-color: #4587ad;
+    --primary-color-dark: #305f7a;
     --black: #292929;
     --gray-1: #2E2E2E;
     --gray-2: #333333;
@@ -36,7 +34,6 @@ h1 {
     font-size: 4.209rem;
     font-weight: 400;
     line-height: calc(4.209rem * 1.2);
-    color: var(--primary-color);
 }
 
 h2 {
@@ -71,37 +68,38 @@ h6 {
 
 p {
     font-size: 1rem;
-    font-weight: 400;
+    font-weight: 300;
     line-height: calc(1rem * 1.5);
-}
-
-b {
-    font-weight: 400;
 }
 
 li {
     font-size: 1rem;
     font-weight: 300;
     list-style: none;
-    line-height: calc(1rem * 1.2);
-    padding-bottom: 0.8rem;
+    line-height: calc(1rem * 1.5);
 }
 
 small {
     font-size: 0.75rem;
     font-weight: 300;
-    line-height: calc(0.75rem * 1.2);
 }
 
-a {
-    color: #ffffff;
+a, button {
+    color: inherit;
     text-decoration: none;
+    font-family: inherit;
 }
 
 a:hover {
     text-decoration: underline;
-    color: var(--primary-color-light-2);
+    color: var(--primary-color);
 }
+
+.disabled {
+    display: none;
+}
+
+/* --------------------------------- layout --------------------------------- */
 
 .section {
     width: 100vw;
@@ -111,77 +109,12 @@ a:hover {
 }
 
 .content {
-    width: 85vw;
+    width: 90vw;
     max-width: 1200px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
-.disabled {
-    display: none;
-}
-
-/* ------------------------------ screen effect ----------------------------- */
-
-#pixel-effect {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    background-image: url("/img/background-pixel-1.png");
-    mix-blend-mode: darken;
-    image-rendering: pixelated;
-    pointer-events: none;
-    z-index: 1001;
-    opacity: 40%;
-}
-
-#effect-btn {
-    position: fixed;
-    right: 0;
-    top: 0;
-    margin: 1rem;
-    padding: 0.5rem;
-    border-radius: 5px;
-    border-radius: 50%;
-    font-size: 1.333rem;
-}
-
-#effect-btn:hover {
-    color: var(--primary-color-light-2);
-}
-
-/* --------------------------------- buttons -------------------------------- */
-
-.btn-1:hover, .btn-2:hover {
-    cursor: pointer;
-    transition: transform 50ms linear;
-    text-decoration: none;
-}
-
-.btn-1:active, .btn-2:active {
-    transform: scale(90%);
-}
-
-.btn-1 {
-    background-color: var(--gray-1);
-}
-
-.btn-1:hover {
-    background-color: var(--gray-2);
-}
-
-.btn-2 {
-    background-color: var(--gray-2);
-}
-
-.btn-2:hover {
-    background-color: var(--gray-1);
-}
-
-/* --------------------------------- layout --------------------------------- */
 
 .columns {
     display: flex;
@@ -191,36 +124,91 @@ a:hover {
 }
 
 .col {
+    width: 100%;
     flex-basis: 0;
     flex-grow: 1;
+}
+
+/* --------------------------------- buttons -------------------------------- */
+
+.btn {
+    cursor: hover;
+    background-color: var(--gray-1);
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.btn:hover {
+    transition: transform 30ms linear;
+    text-decoration: none;
+    background-color: var(--gray-2);
+    transform: scale(105%);
+}
+
+.btn:active {
+    transform: scale(100%);
 }
 
 /* ---------------------------- navigation header --------------------------- */
 
 #navbar {
-    width: 100vw;
     font-size: 1.333rem;
 }
 
-#navbar-content {
+#navbar-wide {
     display: flex;
     flex-direction: row;
-    /* todo ? */
     justify-content: flex-end;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding: 15px 0;
 }
 
-#navbar-content a {
-    padding: 0.5rem;
-    border-radius: 5px;
-    margin-right: 1rem;
+#navbar-wide .btn {
+    margin-left: 15px;
+}
+
+#navbar-menu {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-end;
+    display: none;
+}
+
+#navbar-menu .btn {
+    font-size: 1.33rem;
+    margin: 15px 15px;
+    margin-left: auto;
+}
+
+#navbar-menu ul {
+    width: 100%;
+    background-color: var(--light-gray);
+    color: var(--black);
+    padding: 15px;
+}
+
+#navbar-menu li {
+    text-align: end;
+    font-size: 1.333rem;
+    line-height: 2rem;
+}
+
+@media (max-width: 700px) {
+
+    #navbar-wide {
+        display: none;
+    }
+
+    #navbar-menu {
+        display: flex;
+    }
 }
 
 /* --------------------------------- footer --------------------------------- */
 
 footer {
-    color: #949494;
+    color: var(--light-gray);
     margin-top: auto;
-    padding: 0.5rem;
+    padding: 10px;
 }

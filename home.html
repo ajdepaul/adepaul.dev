@@ -6,31 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/v4-shims.min.css" integrity="sha512-juNw36A2S+8vPLyCQCBmfxRf1+gFYy07BozcavXe9adyITkvA9LuVCbkZI9kp59tjUrn/S7zeDFN1Brz1JqJnA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" integrity="sha384-xeJqLiuOvjUBq3iGOjvSQSIlwrpqjSHXpduPd6rQpuiM3f5/ijby8pCsnbu5S81n" crossorigin="anonymous">
     <link rel="stylesheet" href="/style/common.css">
     <link rel="stylesheet" href="/style/home.css">
     <title>adepaul.dev</title>
 </head>
 <body>
-    <div id="effect-btn" class="btn-1"><i class="bi bi-display"></i></div>
-    <div id="pixel-effect"></div>
-
     <header id="navbar" class="section">
-        <nav id="navbar-content" class="content">
-            <a href="#" class="btn-1">Home</a>
-            <a href="#" class="btn-1">Contact & Profiles</a>
-            <a href="#" class="btn-1">Projects</a>
+        <nav id="navbar-wide" class="content">
+            <a href="/home.html" class="btn">Home</a>
+            <a href="/contact.html" class="btn">Contact & Profiles</a>
+            <a href="/projects.html" class="btn">Projects</a>
+        </nav>
+        <nav id="navbar-menu">
+            <button class="btn"><i class="fa-solid fa-bars"></i></button>
+            <ul class="disabled">
+                <li><a href="/home.html">Home</a></li>
+                <li><a href="/contact.html">Contact & Profiles</a></li>
+                <li><a href="/projects.html">Projects</a></li>
+            </ul>
         </nav>
     </header>
 
     <div id="title" class="section">
         <div class="content">
-            <img src="/img/me.png">
-            <div id="text">
-                <div id="line-1">Hi! I'm...</div>
+            <img id="profile-pic" src="/img/me.png" alt="Picture of Anthony DePaul">
+            <div id="title-text">
+                <div id="title-line-1">Hi! I'm...</div>
                 <h1>Anthony DePaul</h1>
-                <div id="line-3">
-                    <div>
+                <div id="title-line-3">
+                    <div id="title-links">
                         <a href="mailto:anthony@adepaul.dev" id="email">anthony@adepaul.dev</a>
                         <a href="https://github.com/ajdepaul" class="icon"><i class="fa fa-github" aria-hidden="true"></i></a>
                         <a href="https://github.com/antD97" class="icon"><i class="fa fa-github" aria-hidden="true"></i></a>
@@ -44,14 +48,10 @@
 
     <div id="edu-ski-exp" class="section">
         <div class="content">
-            <div class="columns">
+            <h3>Education</h3>
+            <div id="education-columns" class="columns">
                 <div class="col">
-                    <h3>Education</h3>
-                </div>
-            </div>
-            <div class="columns">
-                <div class="col">
-                    <h4>Shippensburg University [ABET&nbsp;accredited]</h4>
+                    <h4>Shippensburg University<br>[ABET accredited]</h4>
                     <ul>
                         <li>B.S. in Computer Science; concentration in Artificial Intelligence</li>
                         <li>Minor in Mathematics</li>
@@ -64,7 +64,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="columns">
+            <div id="skills-experience" class="columns">
                 <div class="col">
                     <h3>Skills</h3>
                     <h4>Programming Languages</h4>
@@ -98,12 +98,13 @@
                 <div class="col">
                     <h3>Experience</h3>
                     <h4>Shippensburg University Internally Funded Research Project</h4>
-                    <ul>
-                        <li>
-                            <a href="#"><i class="fa-solid fa-link"></i> Improving Code Readability by Transforming Loops to Stream Constructs</a>
-                        </li>
-                    </ul>
+                    <p>
+                        <a href="#"><i class="fa-solid fa-file"></i> Improving Code Readability by Transforming Loops to Stream Constructs</a>
+                    </p>
                     <h4>Shippensburg University Computer Science Tutor</h4>
+                    <p>
+                        Taught C data structures and basic programming concepts in Python
+                    </p>
                 </div>
             </div>
         </div>
@@ -118,19 +119,19 @@
                         <h4>Project 2</h4>
                         <img src="/img/vignette.png">
                         <p>The quick brown fox jumps over the lazy dog. Over and over again. Here is some more text to read. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita, quos.</p>
-                        <a href="#" class="btn-1">More</a>
+                        <a href="#" class="btn">More</a>
                     </div>
                     <div class="project">
                         <h4>Project 4</h4>
                         <img src="/img/vignette.png">
                         <p>The quick brown fox jumps over the lazy dog. Over and over again. Here is some more text to read. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita, quos.</p>
-                        <a href="#" class="btn-1">More</a>
+                        <a href="#" class="btn">More</a>
                     </div>
                     <div class="project">
                         <h4>Project 6</h4>
                         <img src="/img/vignette.png">
                         <p>The quick brown fox jumps over the lazy dog. Over and over again. Here is some more text to read. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita, quos.</p>
-                        <a href="#" class="btn-1">More</a>
+                        <a href="#" class="btn">More</a>
                     </div>
                 </div>
                 <div class="col">
@@ -138,23 +139,23 @@
                         <h4>Project 1</h4>
                         <img src="/img/vignette.png">
                         <p>The quick brown fox jumps over the lazy dog. Over and over again. Here is some more text to read. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita, quos.</p>
-                        <a href="#" class="btn-1">More</a>
+                        <a href="#" class="btn">More</a>
                     </div>
                     <div class="project">
                         <h4>Project 3</h4>
                         <img src="/img/vignette.png">
                         <p>The quick brown fox jumps over the lazy dog. Over and over again. Here is some more text to read. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita, quos.</p>
-                        <a href="#" class="btn-1">More</a>
+                        <a href="#" class="btn">More</a>
                     </div>
                     <div class="project">
                         <h4>Project 5</h4>
                         <img src="/img/vignette.png">
                         <p>The quick brown fox jumps over the lazy dog. Over and over again. Here is some more text to read. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita, quos.</p>
-                        <a href="#" class="btn-1">More</a>
+                        <a href="#" class="btn">More</a>
                     </div>
                 </div>
             </div>
-            <a href="#" id="all-projects" class="btn-1">All Projects</a>
+            <a href="#" id="all-projects-btn" class="btn">All Projects</a>
         </div>
     </div>
 
@@ -163,6 +164,5 @@
     </footer>
 
     <script src="/script/common.js"></script>
-    <script src="/script/home.js"></script>
 </body>
 </html>

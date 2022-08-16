@@ -9,24 +9,32 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
+    margin: 50px 0;
 }
 
-#text {
+#profile-pic {
+    padding-right: 15px;
+}
+
+#title-text {
     display: flex;
     flex-direction: column;
-    padding: 1rem;
 }
 
-#line-1 {
+#title-line-1 {
     transform: translateY(0.8rem);
 }
 
-#line-3 {
+#title h1 {
+    color: var(--primary-color);
+    text-align: center;
+}
+
+#title-line-3 {
     display: flex;
     justify-content: space-between;
     transform: translateY(-0.6rem);
+    text-align: end;
 }
 
 #email {
@@ -42,58 +50,109 @@
     transform: translateY(50%) scale(150%);
 }
 
+@media (max-width: 1024px) {
+    #profile-pic {
+        width: 200px;
+    }
+}
+
+@media (max-width: 960px) {
+    #profile-pic {
+        display: none;
+    }
+}
+
+@media (max-width: 700px) {
+    #title-links {
+        display: none;
+    }
+
+    #title-line-1 {
+        transform: none;
+    }
+    
+    #title-line-3 {
+        transform: none;
+    }
+
+    #title-line-3 > * {
+        width: 100%;
+    }
+}
+
+@media (max-width: 400px) {
+    #title h1 {
+        font-size: 3.157rem;
+        line-height: calc(3.157rem * 1.2);
+    }
+}
+
 /* ----------------------- education skills experience ---------------------- */
 
 #edu-ski-exp {
-    padding-top: 3rem;
     background-color: var(--gray-1);
-}
-
-#edu-ski-exp .content > h3 {
-    margin-left: 1rem;
-    margin-right: 1rem;
-    width: 100%;
-}
-
-#edu-ski-exp .content > .columns > .col {
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding: 50px 0;
 }
 
 #edu-ski-exp h3 {
-    margin-bottom: 1rem;
+    width: 100%;
+    margin-bottom: 15px;
+    color: var(--primary-color);
     border-style: solid;
     border-width: 0;
     border-bottom-width: 2px;
-    border-color: #ffffff;
+    border-color: var(--primary-color);
 }
 
-#edu-ski-exp h4, #edu-ski-exp h5 {
-    margin-bottom: 0.5rem;
+#edu-ski-exp h4,
+#edu-ski-exp h5 {
+    margin-bottom: 10px;
 }
 
+#edu-ski-exp p,
 #edu-ski-exp ul {
-    margin-bottom: 1rem;
+    margin-bottom: 10px;
+}
+
+/* in between column spacing */
+#edu-ski-exp .col:not(:first-child) { margin-left: 30px; }
+#edu-ski-exp .col:not(:last-child) { margin-right: 30px; }
+
+#education-columns {
+    margin-bottom: 15px;
+}
+
+@media (max-width: 960px) {
+    #education-columns,
+    #skills-experience {
+        flex-direction: column;
+    }
+
+    #edu-ski-exp .col:not(:first-child),
+    #edu-ski-exp .col:not(:last-child) {
+        margin-left: 0;
+        margin-right: 0;
+    }
 }
 
 /* -------------------------------- projects -------------------------------- */
 
 #projects {
-    padding-top: 3rem;
+    padding-top: 50px;
 }
 
-#projects .content > .columns > .col {
-    padding-left: 2rem;
-    padding-right: 2rem;
-}
+/* in between column spacing */
+#projects .col:not(:first-child) { margin-left: 30px; }
+#projects .col:not(:last-child) { margin-right: 30px; }
 
 #projects h3 {
-    margin-top: 5rem;
-    margin-bottom: 7rem;
+    margin-top: 70px;
+    margin-bottom: 130px;
+    color: var(--primary-color);
     border-style: solid;
     border-width: 0;
     border-bottom-width: 2px;
-    border-color: #ffffff;
+    border-color: var(--primary-color);
 }
 
 #projects .project {
@@ -104,74 +163,68 @@
     color: var(--black);
     border-style: solid;
     border-width: 5px;
-    /* todo keep? */
-    /* border-top-width: 40px; */
     border-radius: 5px;
-    box-shadow: 1.5rem 1.5rem 0 0 #0000003b;
-    margin-bottom: 3rem;
+    box-shadow: 25px 25px 0 0 #0000003b;
+    margin-bottom: 50px;
 }
 
 #projects .project > * {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-}
-
-#projects .project > *:last-child {
-    margin-bottom: 1.5rem;
+    padding-left: 25px;
+    padding-right: 25px;
 }
 
 /* left column odds */
 #projects .content > .columns > .col:first-of-type > .project:nth-of-type(odd) {
-    border-color: var(--primary-color-light-1);
+    border-color: var(--primary-color);
 }
 
 /* left column evens */
 #projects .content > .columns > .col:first-of-type > .project:nth-of-type(even) {
-    border-color: var(--primary-color-dark-1);
+    border-color: var(--primary-color-dark);
 }
 
-/* right columns odds */
+/* right column odds */
 #projects .content > .columns > .col:last-of-type > .project:nth-of-type(odd) {
-    border-color: var(--primary-color-dark-2);
+    border-color: var(--primary-color-dark);
 }
 
-/* right columns evens */
+/* right column evens */
 #projects .content > .columns > .col:last-of-type > .project:nth-of-type(even) {
-    border-color: var(--primary-color);
+    border-color: var(--primary-color-light);
 }
 
 #projects .project img {
     width: 100%;
     border-radius: 5px;
-    margin-bottom: 1rem;
+    margin-bottom: 15px;
 }
 
 #projects .project h4 {
     font-family: 'Share Tech Mono', monospace;
-    padding: 0.5rem;
-    margin-bottom: 1.5rem;
+    padding: 5px;
+    margin-bottom: 25px;
     width: 100%;
     color: #ffffff;
 }
 
 /* left column odds */
 #projects .content > .columns > .col:first-of-type .project:nth-of-type(odd) h4 {
-    background-color: var(--primary-color-light-1);
+    background-color: var(--primary-color);
 }
 
 /* left column evens */
 #projects .content > .columns > .col:first-of-type .project:nth-of-type(even) h4 {
-    background-color: var(--primary-color-dark-1);
+    background-color: var(--primary-color-dark);
 }
 
 /* right column odds */
 #projects .content > .columns > .col:last-of-type .project:nth-of-type(odd) h4 {
-    background-color: var(--primary-color-dark-2);
+    background-color: var(--primary-color-dark);
 }
 
 /* right column evens */
 #projects .content > .columns > .col:last-of-type .project:nth-of-type(even) h4 {
-    background-color: var(--primary-color);
+    background-color: var(--primary-color-light);
 }
 
 #projects .project p {
@@ -179,29 +232,52 @@
     font-size: 1.167rem;
 }
 
-#projects .project .btn-1 {
+#projects .project .btn {
     display: inline-block;
     align-self: center;
     font-family: 'Share Tech Mono', monospace;
     font-size: 1.167rem;
-    padding: 1rem;
+    padding: 15px 25px;
     border-radius: 5px;
-    margin-top: 1rem;
-    
+    margin: 20px 0;
+    color: #ffffff;
 }
 
-#projects #all-projects.btn-1 {
+#projects .project .btn:hover {
+    color: var(--primary-color);
+}
+
+#all-projects-btn {
     font-size: 1.333rem;
-    padding: 1rem;
+    padding: 15px;
     border-radius: 5px;
-    margin-bottom: 3rem;
+    margin-bottom: 50px;
     background-color: var(--primary-color);
 }
 
-#projects #all-projects.btn-1:hover {
+#all-projects-btn:hover {
     color: #ffffff;
-    background-color: var(--primary-color-light-1);
+    background-color: var(--primary-color-light);
 }
+
+@media (max-width: 900px) {
+    #projects .columns {
+        flex-direction: column;
+    }
+
+    #projects .col:not(:first-child),
+    #projects .col:not(:last-child) {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    #projects h3 {
+        margin-top: 0;
+        margin-bottom: 50px;
+    }
+}
+
+/* --------------------------------- footer --------------------------------- */
 
 footer {
     background-color: var(--gray-2);
