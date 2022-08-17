@@ -1,0 +1,87 @@
+body {
+    background-color: var(--gray-1);
+}
+
+#navbar {
+    background-color: var(--black);
+}
+
+/* ---------------------------------- title --------------------------------- */
+
+#title {
+    background-image: url("/img/stripe-pattern.png");
+}
+
+#title .content {
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 75px 0;
+}
+
+#title h1 {
+    color: var(--primary-color);
+    flex-basis: 0;
+    flex-grow: 1;
+    text-align: center;
+    padding: 0 15px;
+}
+
+@media (max-width: 700px) {
+    h1 {
+        font-size: 3.157rem;
+    }
+}
+
+@media (max-width: 540px) {
+    h1 {
+        font-size: 4.209rem;
+    }
+
+    #title .content {
+        flex-direction: column;
+    }
+}
+
+/* ---------------------------------- links --------------------------------- */
+
+#links {
+    background-color: var(--gray-1);
+    text-align: center;
+    margin-top: 50px;
+}
+
+#links li {
+    font-size: 1.333rem;
+    line-height: calc(1.333rem * 2);
+}
+
+#links a {
+    display: inline-block;
+    transition: transform ease 0.4s;
+}
+
+#links a:hover {
+    transform: translateX(20px);
+}
+
+@media (max-width: 700px) {
+    #links li {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 540px) {
+    #links .columns {
+        flex-direction: column;
+    }
+
+    #links li {
+        font-size: 1.333rem;
+    }
+}
+
+/* --------------------------------- footer --------------------------------- */
+
+footer {
+    background-color: var(--black);
+}

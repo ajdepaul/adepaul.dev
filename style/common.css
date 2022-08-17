@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@300;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
 :root {
@@ -6,7 +6,7 @@
     --primary-color: #4587ad;
     --primary-color-dark: #305f7a;
     --black: #292929;
-    --gray-1: #2E2E2E;
+    --gray-1: #2e2e2e;
     --gray-2: #333333;
     --light-gray: #b4b4b4;
 }
@@ -32,37 +32,37 @@ body {
 
 h1 {
     font-size: 4.209rem;
-    font-weight: 400;
+    font-weight: 500;
     line-height: calc(4.209rem * 1.2);
 }
 
 h2 {
     font-size: 3.157rem;
-    font-weight: 400;
+    font-weight: 500;
     line-height: calc(3.157rem * 1.2);
 }
 
 h3 {
     font-size: 2.369rem;
-    font-weight: 400;
+    font-weight: 500;
     line-height: calc(2.369rem * 1.2);
 }
 
 h4 {
     font-size: 1.777rem;
-    font-weight: 400;
+    font-weight: 500;
     line-height: calc(1.777rem * 1.2);
 }
 
 h5 {
     font-size: 1.333rem;
-    font-weight: 400;
+    font-weight: 500;
     line-height: calc(1.333rem * 1.2);
 }
 
 h6 {
     font-size: 1rem;
-    font-weight: 400;
+    font-weight: 500;
     line-height: calc(1rem * 1.2);
 }
 
@@ -155,6 +155,7 @@ a:hover {
 
 #navbar {
     font-size: 1.333rem;
+    background-color: var(--black);
 }
 
 #navbar-wide {
