@@ -137,8 +137,8 @@
 
 /* -------------------------------- projects -------------------------------- */
 
-#projects {
-    padding-top: 50px;
+#projects .content {
+    margin: 50px 0;
 }
 
 /* in between column spacing */
@@ -165,7 +165,7 @@
     border-width: 5px;
     border-radius: 5px;
     box-shadow: 25px 25px 0 0 #0000003b;
-    margin-bottom: 50px;
+    margin-bottom: 60px;
 }
 
 #projects .project > * {
@@ -201,6 +201,8 @@
 
 #projects .project h4 {
     font-family: 'Share Tech Mono', monospace;
+    /* todo keep? */
+    /* text-align: center; */
     padding: 5px;
     margin-bottom: 25px;
     width: 100%;
@@ -233,7 +235,6 @@
 }
 
 #projects .project .btn {
-    display: inline-block;
     align-self: center;
     font-family: 'Share Tech Mono', monospace;
     font-size: 1.167rem;
@@ -251,7 +252,6 @@
     font-size: 1.333rem;
     padding: 15px;
     border-radius: 5px;
-    margin-bottom: 50px;
     background-color: var(--primary-color);
 }
 

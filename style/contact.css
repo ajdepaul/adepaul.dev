@@ -2,10 +2,6 @@ body {
     background-color: var(--gray-1);
 }
 
-#navbar {
-    background-color: var(--black);
-}
-
 /* ---------------------------------- title --------------------------------- */
 
 #title {
@@ -27,18 +23,24 @@ body {
 }
 
 @media (max-width: 700px) {
-    h1 {
+    #title h1 {
         font-size: 3.157rem;
     }
 }
 
 @media (max-width: 540px) {
-    h1 {
+    #title h1 {
         font-size: 4.209rem;
     }
 
     #title .content {
         flex-direction: column;
+    }
+}
+
+@media (max-width: 370px) {
+    #title h1 {
+        font-size: 3.157rem;
     }
 }
 
@@ -48,6 +50,7 @@ body {
     background-color: var(--gray-1);
     text-align: center;
     margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 #links li {
@@ -77,6 +80,12 @@ body {
 
     #links li {
         font-size: 1.333rem;
+    }
+}
+
+@media (max-width: 370px) {
+    #links li {
+        font-size: 1rem;
     }
 }
 
