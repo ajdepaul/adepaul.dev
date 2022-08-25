@@ -101,11 +101,12 @@
 }
 
 #projects .project {
-    transition: transform 0.4s ease-out 0.4s, opacity 0.4s linear 0.4s, max-height 0.4s ease-in-out;
-    max-height: 60rem;
+    transition: transform 0.4s ease-out 0.4s, opacity 0.4s linear 0.4s, max-height 0.4s ease;
+    max-height: 90rem;
     opacity: 100%;
-    font-family: 'Share Tech Mono', monospace;
-    line-height: calc(1.167rem * 1.5);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 400;
+    line-height: calc(1rem * 1.5);
 }
 
 #projects .project-content {
@@ -115,7 +116,7 @@
     border-width: 5px;
     border-radius: 5px;
     margin-bottom: 60px;
-    box-shadow: 25px 25px 0 0 #0000003b;
+    box-shadow: 25px 25px 0 0 var(--transp-black);
 }
 
 #projects .project.disabled {
@@ -125,7 +126,7 @@
     opacity: 0%;
     max-height: 0px;
     overflow: hidden;
-    transition: transform 0.4s ease-in, opacity 0.4s linear, max-height 0.4s ease-in-out 0.4s, visibility 0.4s;
+    transition: transform 0.4s ease-in, opacity 0.4s linear, max-height 0.4s ease 0.4s, visibility 0.4s;
 }
 
 #projects .project-content > .columns {
@@ -145,8 +146,7 @@
 }
 
 #projects .project h4 {
-    /* todo keep? */
-    /* text-align: center; */
+    font-weight: 600;
     padding: 5px;
     width: 100%;
     color: #ffffff;
@@ -182,7 +182,6 @@
     align-items: flex-start;
     padding: 25px;
     padding-left: 12px;
-    font-size: 1.167rem;
 }
 
 #projects .reversed .proj-text {
@@ -192,14 +191,33 @@
 
 #projects .publication-date,
 #projects .completion-date {
-    padding-bottom: 10px;
     font-style: italic;
 }
 
 #projects .proj-text p {
-    padding-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 10px 0;
     font-size: inherit;
+    overflow-y: auto;
+    height: 0px;
+    flex-grow: 1;
+    /* background-color: #ffffff; */
+    /* border: var(--gray-3) solid 2px; */
+    border-top: var(--transp-black) solid 2px;
+    border-bottom: var(--transp-black) solid 2px;
+    /* color: #ffffff; */
 }
+
+/* #projects .project:nth-of-type(odd) .proj-text p {
+    border-top: var(--primary-color-dark) solid 2px;
+    border-bottom: var(--primary-color-dark) solid 2px;
+}
+
+#projects .project:nth-of-type(even) .proj-text p {
+    border-top: var(--primary-color) solid 2px;
+    border-bottom: var(--primary-color) solid 2px;
+} */
 
 #projects .proj-text .btn {
     align-self: center;
@@ -229,11 +247,10 @@
     #projects .project {
         max-height: 120rem;
     }
-}
 
-@media (max-width: 480px) {
-    #projects .proj-text {
-        font-size: 1rem;
+    #projects .proj-text p {
+        height: calc(1.5rem * 6);
+        flex-grow: 0;
     }
 }
 

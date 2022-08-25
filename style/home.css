@@ -41,9 +41,13 @@
     padding-right: 0.65rem;
 }
 
+#title a {
+    text-decoration: none;
+}
+
 #title a.icon {
     display: inline-block;
-    transition: transform 100ms linear;
+    transition: transform 0.1s ease;
 }
 
 #title a.icon:hover {
@@ -164,7 +168,7 @@
     border-style: solid;
     border-width: 5px;
     border-radius: 5px;
-    box-shadow: 25px 25px 0 0 #0000003b;
+    box-shadow: 25px 25px 0 0 var(--transp-black);
     margin-bottom: 60px;
 }
 
@@ -200,7 +204,8 @@
 }
 
 #projects .project h4 {
-    font-family: 'Share Tech Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
     /* todo keep? */
     /* text-align: center; */
     padding: 5px;
@@ -230,14 +235,21 @@
 }
 
 #projects .project p {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 1.167rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 400;
+    padding: 10px 0;
+    margin: 0 25px;
+    border-top: var(--transp-black) solid 2px;
+    border-bottom: var(--transp-black) solid 2px;
+    height: calc(1.5rem * 5);
+    overflow: auto;
 }
 
 #projects .project .btn {
     align-self: center;
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 1.167rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 400;
+    font-size: 1rem;
     padding: 15px 25px;
     border-radius: 5px;
     margin: 20px 0;
