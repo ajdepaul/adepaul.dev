@@ -1,6 +1,6 @@
 const tagButtons = document.querySelectorAll('#tags .btn')
 const searchInput = document.querySelector('#search input')
-const projects = Array.from(document.querySelectorAll('#projects .project'))
+const projects = Array.from(document.querySelectorAll('#projects .project-container'))
     .map(elem => {
         return {
             "title": elem.querySelector('h4').innerText,

@@ -147,15 +147,11 @@ a:hover, button:hover {
 .columns {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
     width: 100%;
 }
 
 .col {
-    /* width: 100%; */
-    flex-basis: 0;
-    flex-grow: 1;
-    flex-shrink: 1;
+    flex: 1 1 0;
 }
 
 /* --------------------------------- buttons -------------------------------- */
@@ -243,6 +239,52 @@ a:hover, button:hover {
     #navbar-menu {
         display: flex;
     }
+}
+
+/* ----------------------------- project windows ---------------------------- */
+
+.project {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: var(--light-gray);
+    color: var(--black);
+    border: 5px solid var(--primary-color);
+    border-radius: 5px;
+    box-shadow: 25px 25px 0 0 var(--transp-black);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 400;
+}
+
+.project-title {
+    font-weight: 600;
+    padding: 5px;
+    width: 100%;
+    color: #ffffff;
+    background-color: var(--primary-color);
+    overflow: hidden;
+}
+
+.project-content {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 25px 25px 0;
+}
+
+.project-content > * {
+    margin-bottom: 25px;
+}
+
+.project-content img {
+    background-image: url("/img/stripe-pattern.png");
+    width: 100%;
+    max-width: 100%;
+    border: 3px solid var(--black);
+    border-radius: 5px;
+    box-shadow: 10px 10px 0 0 var(--transp-black);
+    align-self: center;
 }
 
 /* --------------------------------- footer --------------------------------- */

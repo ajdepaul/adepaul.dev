@@ -160,21 +160,7 @@
 }
 
 #projects .project {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    background-color: var(--light-gray);
-    color: var(--black);
-    border-style: solid;
-    border-width: 5px;
-    border-radius: 5px;
-    box-shadow: 25px 25px 0 0 var(--transp-black);
     margin-bottom: 60px;
-}
-
-#projects .project > * {
-    padding-left: 25px;
-    padding-right: 25px;
 }
 
 /* left column odds */
@@ -197,66 +183,52 @@
     border-color: var(--primary-color-light);
 }
 
-#projects .project img {
-    width: 100%;
-    border-radius: 5px;
-    margin-bottom: 15px;
-}
-
-#projects .project h4 {
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 600;
-    /* todo keep? */
-    /* text-align: center; */
-    padding: 5px;
-    margin-bottom: 25px;
-    width: 100%;
-    color: #ffffff;
-}
-
 /* left column odds */
-#projects .content > .columns > .col:first-of-type .project:nth-of-type(odd) h4 {
+#projects .content > .columns > .col:first-of-type .project:nth-of-type(odd) .project-title {
     background-color: var(--primary-color);
 }
 
 /* left column evens */
-#projects .content > .columns > .col:first-of-type .project:nth-of-type(even) h4 {
+#projects .content > .columns > .col:first-of-type .project:nth-of-type(even) .project-title {
     background-color: var(--primary-color-dark);
 }
 
 /* right column odds */
-#projects .content > .columns > .col:last-of-type .project:nth-of-type(odd) h4 {
+#projects .content > .columns > .col:last-of-type .project:nth-of-type(odd) .project-title {
     background-color: var(--primary-color-dark);
 }
 
 /* right column evens */
-#projects .content > .columns > .col:last-of-type .project:nth-of-type(even) h4 {
+#projects .content > .columns > .col:last-of-type .project:nth-of-type(even) .project-title {
     background-color: var(--primary-color-light);
 }
 
-#projects .project p {
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 400;
+#projects .project-content > * {
+    margin-bottom: 20px;
+}
+
+#projects .project-content img {
+    /* based on 16:9 image */
+    max-height: 290px;
+    width: auto;
+}
+
+#projects .project-content p {
     padding: 10px 0;
-    margin: 0 25px;
     border-top: var(--transp-black) solid 2px;
     border-bottom: var(--transp-black) solid 2px;
     height: calc(1.5rem * 5);
-    overflow: auto;
+    overflow-y: auto;
 }
 
-#projects .project .btn {
+#projects .project-content .btn {
     align-self: center;
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 400;
     font-size: 1rem;
     padding: 15px 25px;
-    border-radius: 5px;
-    margin: 20px 0;
     color: #ffffff;
 }
 
-#projects .project .btn:hover {
+#projects .project-content .btn:hover {
     color: var(--primary-color);
 }
 

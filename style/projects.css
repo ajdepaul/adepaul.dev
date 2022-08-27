@@ -100,26 +100,13 @@
     margin-top: 50px;
 }
 
-#projects .project {
+#projects .project-container {
     transition: transform 0.4s ease-out 0.4s, opacity 0.4s linear 0.4s, max-height 0.4s ease;
     max-height: 90rem;
     opacity: 100%;
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 400;
-    line-height: calc(1rem * 1.5);
 }
 
-#projects .project-content {
-    background-color: var(--light-gray);
-    color: var(--black);
-    border-style: solid;
-    border-width: 5px;
-    border-radius: 5px;
-    margin-bottom: 60px;
-    box-shadow: 25px 25px 0 0 var(--transp-black);
-}
-
-#projects .project.disabled {
+#projects .project-container.disabled {
     display: block;
     visibility: hidden;
     transform: translate(75%);
@@ -129,63 +116,49 @@
     transition: transform 0.4s ease-in, opacity 0.4s linear, max-height 0.4s ease 0.4s, visibility 0.4s;
 }
 
-#projects .project-content > .columns {
-    align-items:stretch;
+#projects .project {
+    margin-bottom: 50px;
 }
 
 #projects .project-content > .columns.reversed {
     flex-direction: row-reverse;
 }
 
-#projects .project:nth-of-type(odd) .project-content {
+#projects .project:nth-of-type(odd) {
     border-color: var(--primary-color-dark);
 }
 
-#projects .project:nth-of-type(even) .project-content {
-    border-color: var(--primary-color);
-}
-
-#projects .project h4 {
-    font-weight: 600;
-    padding: 5px;
-    width: 100%;
-    color: #ffffff;
-}
-
-#projects .project:nth-of-type(odd) h4 {
+#projects .project:nth-of-type(odd) .project-title {
     background-color: var(--primary-color-dark);
-}
-#projects .project:nth-of-type(even) h4 {
-    background-color: var(--primary-color);
 }
 
 #projects .proj-img {
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 25px;
-    padding-right: 13px;
+    margin-right: 13px;
 }
 
-#projects .reversed .proj-img {
-    padding: 25px;
-    padding-left: 12px;
+#projects .proj-img img {
+    /* based on 16:9 image */
+    max-height: 317px;
+    width: auto;
 }
 
-#projects img {
-    width: 100%;
+#projects .columns.reversed .proj-img {
+    margin-right: 0;
+    margin-left: 12px;
 }
 
 #projects .proj-text {
+    line-height: calc(1rem * 1.5);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 25px;
     padding-left: 12px;
 }
 
-#projects .reversed .proj-text {
-    padding: 25px;
+#projects .columns.reversed .proj-text {
+    padding-left: 0;
     padding-right: 13px;
 }
 
@@ -198,49 +171,35 @@
     margin-top: 10px;
     margin-bottom: 20px;
     padding: 10px 0;
-    font-size: inherit;
     overflow-y: auto;
-    height: 0px;
+    flex-basis: 0;
     flex-grow: 1;
-    /* background-color: #ffffff; */
-    /* border: var(--gray-3) solid 2px; */
     border-top: var(--transp-black) solid 2px;
     border-bottom: var(--transp-black) solid 2px;
-    /* color: #ffffff; */
 }
-
-/* #projects .project:nth-of-type(odd) .proj-text p {
-    border-top: var(--primary-color-dark) solid 2px;
-    border-bottom: var(--primary-color-dark) solid 2px;
-}
-
-#projects .project:nth-of-type(even) .proj-text p {
-    border-top: var(--primary-color) solid 2px;
-    border-bottom: var(--primary-color) solid 2px;
-} */
 
 #projects .proj-text .btn {
     align-self: center;
-    margin-top: auto;
-    font-size: inherit;
     padding: 15px 25px;
-    border-radius: 5px;
     color: #ffffff;
 }
 
+#projects .proj-text .btn:hover {
+    color: var(--primary-color);
+}
+
 @media (max-width: 960px) {
-    #projects .project-content > .columns,
-    #projects .project-content > .columns.reversed {
+    #projects .project-content > .columns {
         flex-direction: column;
     }
 
     #projects .proj-img {
-        padding: 25px;
+        padding: 0;
         padding-bottom: 13px;
     }
     
     #projects .proj-text {
-        padding: 25px;
+        padding: 0;
         padding-top: 12px;
     }
 
@@ -248,9 +207,12 @@
         max-height: 120rem;
     }
 
+    #projects .proj-img {
+        justify-content: center;
+    }
+
     #projects .proj-text p {
-        height: calc(1.5rem * 6);
-        flex-grow: 0;
+        flex-basis: calc(1.5rem * 6);
     }
 }
 

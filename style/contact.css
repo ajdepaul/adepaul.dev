@@ -9,15 +9,11 @@ body {
 }
 
 #title .content {
-    flex-direction: row;
-    justify-content: space-evenly;
     margin: 75px 0;
 }
 
 #title h1 {
     color: var(--primary-color);
-    flex-basis: 0;
-    flex-grow: 1;
     text-align: center;
     padding: 0 15px;
 }
@@ -33,7 +29,7 @@ body {
         font-size: 4.209rem;
     }
 
-    #title .content {
+    #title .content.columns {
         flex-direction: column;
     }
 }
