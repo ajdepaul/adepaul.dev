@@ -189,7 +189,8 @@
 }
 
 @media (max-width: 960px) {
-    #projects .project-content > .columns {
+    #projects .project-content > .columns,
+    #projects .project-content > .columns.reversed {
         flex-direction: column;
     }
 

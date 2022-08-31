@@ -8,7 +8,7 @@ body {
     background-image: url("/img/stripe-pattern.png");
 }
 
-#title .content {
+#title .content.columns {
     margin: 75px 0;
 }
 
@@ -46,6 +46,10 @@ body {
     background-color: var(--gray-1);
     text-align: center;
     padding: 50px 0;
+}
+
+#links .content.columns {
+    align-items: flex-start;
 }
 
 #links li {
