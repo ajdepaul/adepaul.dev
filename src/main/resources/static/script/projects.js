@@ -4,7 +4,7 @@ const projects = Array.from(document.querySelectorAll('#projects .project-contai
     .map(elem => {
         return {
             "title": elem.querySelector('h4').innerText,
-            "tags": elem.dataset.tags.split(',').map(tag => tag.toLowerCase()),
+            "tags": (`${elem.dataset.technologies},${elem.dataset.languages}`).split(','),
             "elem": elem
         }
     })
@@ -46,7 +46,7 @@ function filterProjects() {
 
         // tags filter
         tagButtons.forEach(button => {
-            const buttonText = button.innerText.toLowerCase()
+            const buttonText = button.innerText
             if (button.classList.contains('require') && !proj.tags.includes(buttonText)) {
                 proj.elem.classList.add('disabled')
             } else if (button.classList.contains('exclude') && proj.tags.includes(buttonText)) {

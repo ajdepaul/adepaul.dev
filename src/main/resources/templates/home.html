@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,21 +11,7 @@
     <title>adepaul.dev</title>
 </head>
 <body>
-    <header id="navbar" class="section">
-        <nav id="navbar-wide" class="content">
-            <a href="/home.html" class="btn">Home</a>
-            <a href="/projects.html" class="btn">Projects</a>
-            <a href="/contact-profiles.html" class="btn">Contact & Profiles</a>
-        </nav>
-        <nav id="navbar-menu">
-            <button class="btn"><i class="fa-solid fa-bars"></i></button>
-            <ul class="disabled">
-                <li><a href="/home.html">Home</a></li>
-                <li><a href="/projects.html">Projects</a></li>
-                <li><a href="/contact-profiles.html">Contact & Profiles</a></li>
-            </ul>
-        </nav>
-    </header>
+    <header th:replace="fragments :: header"></header>
 
     <div id="title" class="section">
         <div class="content">
@@ -115,66 +101,33 @@
         <div class="content">
             <div class="columns">
                 <div class="col">
-                    <h3>Projects</h3>
-                    <div class="project">
-                        <h4 class="project-title">Project 2</h4>
+                    <h3>Featured Projects</h3>
+                    <div class="project" th:each="project: ${featuredProjectsEvens}">
+                        <h4 class="project-title" th:text="${project.title}" />
                         <div class="project-content">
-                            <img src="/img/vignette.png" alt="Temp. Image" loading="lazy">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque quas ducimus culpa eum non nesciunt adipisci porro? Fugit corporis hic, laborum pariatur quia consequatur accusantium, nulla aperiam vel eius dolorum eum tempora autem libero reiciendis! Blanditiis est corporis vel consectetur expedita repellat, dolores nisi fugit quis harum totam minima vitae?</p>
-                            <a href="/projects/example_project.html" class="btn">More</a>
-                        </div>
-                    </div>
-                    <div class="project">
-                        <h4 class="project-title">Project 4</h4>
-                        <div class="project-content">
-                            <img src="/img/vignette.png" alt="Temp. Image" loading="lazy">
-                            <p>The quick brown fox jumps over the lazy dog. Over and over again. Here is some more text to read. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita, quos.</p>
-                            <a href="/projects/example_project.html" class="btn">More</a>
-                        </div>
-                    </div>
-                    <div class="project">
-                        <h4 class="project-title">Project 6</h4>
-                        <div class="project-content">
-                            <img src="/img/vignette.png" alt="Temp. Image" loading="lazy">
-                            <p>The quick brown fox jumps over the lazy dog. Over and over again. Here is some more text to read. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita, quos.</p>
-                            <a href="/projects/example_project.html" class="btn">More</a>
+                            <img th:src="${project.imgSrc}" th:alt="${project.imgAlt}" loading="lazy">
+                            <p th:text="${project.summary}"/>
+                            <a th:href="${project.articleLink}" class="btn">More</a>
                         </div>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="project">
-                        <h4 class="project-title">Project 1</h4>
+                    <div class="project" th:each="project: ${featuredProjectsOdds}">
+                        <h4 class="project-title" th:text="${project.title}" />
                         <div class="project-content">
-                            <img src="/img/vignette.png" alt="Temp. Image" loading="lazy">
-                            <p>The quick brown fox jumps over the lazy dog. Over and over again. Here is some more text to read. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita, quos.</p>
-                            <a href="/projects/example_project.html" class="btn">More</a>
-                        </div>
-                    </div>
-                    <div class="project">
-                        <h4 class="project-title">Project 3</h4>
-                        <div class="project-content">
-                            <img src="/img/vignette.png" alt="Temp. Image" loading="lazy">
-                            <p>The quick brown fox jumps over the lazy dog. Over and over again. Here is some more text to read. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita, quos.</p>
-                            <a href="/projects/example_project.html" class="btn">More</a>
-                        </div>
-                    </div>
-                    <div class="project">
-                        <h4 class="project-title">Project 5</h4>
-                        <div class="project-content">
-                            <img src="/img/vignette.png" alt="Temp. Image" loading="lazy">
-                            <p>The quick brown fox jumps over the lazy dog. Over and over again. Here is some more text to read. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita, quos.</p>
-                            <a href="/projects/example_project.html" class="btn">More</a>
+                            <img th:src="${project.imgSrc}" th:alt="${project.imgAlt}" loading="lazy">
+                            <p th:text="${project.summary}"/>
+                            <a th:href="${project.articleLink}" class="btn">More</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <a href="/projects.html" id="all-projects-btn" class="btn">All Projects</a>
+            <a href="/projects" id="all-projects-btn" class="btn">All Projects</a>
         </div>
     </div>
 
-    <footer class="section">
-        <small>Copyright © 2022 Anthony DePaul</small>
-    </footer>
+    <footer th:replace="fragments :: footer"></footer>
+
     <script src="/script/common.js"></script>
 </body>
 </html>

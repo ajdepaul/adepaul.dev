@@ -6,7 +6,7 @@ const bootSequence = document.getElementById('boot-sequence')
 const bootSequenceOutputGroups = document.querySelectorAll('#boot-sequence .output-group')
 const timeStamps = document.querySelectorAll('.time-stamp')
 
-const lineHeightProperty = getComputedStyle(document.documentElement).getPropertyValue('--line-height')
+const lineHeightProperty = getComputedStyle(document.documentElement).getPropertyValue('--line-height').trim()
 const lineHeight = parseFloat(lineHeightProperty)
 let i
 for (i = 0; i < lineHeightProperty.length; i++) {
@@ -15,7 +15,7 @@ for (i = 0; i < lineHeightProperty.length; i++) {
 const lineHeightUnit = lineHeightProperty.substring(i, lineHeightProperty.length)
 
 document.addEventListener('keyup', e => {
-    if (e.code === 'Escape') window.location.href = "home.html"
+    if (e.code === 'Escape') window.location.href = "home"
 })
 
 /* --------------------------- animation sequence --------------------------- */
@@ -57,7 +57,6 @@ setTimeout(blackScreen, time)
 time += 100
 
 setTimeout(splashDim, time)
-// time += 500
 time += 1000
 
 setTimeout(splashOn, time)
@@ -128,4 +127,4 @@ setTimeout(() => {
 }, time)
 time += 500
 
-setTimeout(() => { window.location.href = "home.html" }, time)
+setTimeout(() => { window.location.href = "home" }, time)

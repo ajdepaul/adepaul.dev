@@ -1,0 +1,19 @@
+{
+  "title": "Another Project Example",
+  "projectLink": "https://gitlab.com/",
+  "imgSrc": "/img/vignette.png",
+  "imgAlt": "Temporary blank image",
+  "publicationDate": "Dec. 12, 2011",
+  "completionDate": "Nov. 30, 2005",
+  "technologies": [
+    "Gradle",
+    "Affinity Photo/Photoshop"
+  ],
+  "languages": [
+    "Kotlin",
+    "SQL",
+    "Javascript",
+    "CSS"
+  ],
+  "summary": "This is a different project than the first example project. Yada yada yada yada yada yada yada yada yada yada yada yada yada yada yada yada yada yada yada yada yada yada yada yada yada."
+}

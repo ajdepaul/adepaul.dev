@@ -104,6 +104,7 @@
     transition: transform 0.4s ease-out 0.4s, opacity 0.4s linear 0.4s, max-height 0.4s ease;
     max-height: 90rem;
     opacity: 100%;
+    width: 100%;
 }
 
 #projects .project-container.disabled {
@@ -174,6 +175,7 @@
     overflow-y: auto;
     flex-basis: 0;
     flex-grow: 1;
+    width: 100%;
     border-top: var(--transp-black) solid 2px;
     border-bottom: var(--transp-black) solid 2px;
 }

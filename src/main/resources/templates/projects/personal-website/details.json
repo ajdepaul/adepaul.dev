@@ -1,0 +1,21 @@
+{
+  "title": "Personal Website",
+  "projectLink": "https://github.com/ajdepaul/adepaul.dev",
+  "imgSrc": "/img/vignette.png",
+  "imgAlt": "Temporary blank image",
+  "publicationDate": "Sep. 1, 2022",
+  "completionDate": "Sep. 1, 2022",
+  "technologies": [
+    "Linux",
+    "Docker",
+    "Affinity Photo/Photoshop",
+    "Gradle"
+  ],
+  "languages": [
+    "Java",
+    "HTML",
+    "Javascript",
+    "CSS"
+  ],
+  "summary": "This is about this website wowowow."
+}

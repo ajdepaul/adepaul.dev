@@ -1,0 +1,20 @@
+{
+  "title": "Example Project",
+  "projectLink": "https://github.com/",
+  "imgSrc": "/img/vignette.png",
+  "imgAlt": "Temporary blank image",
+  "publicationDate": "Jan. 2000",
+  "completionDate": "Jan. 2000",
+  "technologies": [
+    "Linux",
+    "Docker",
+    "Affinity Photo/Photoshop"
+  ],
+  "languages": [
+    "Java",
+    "HTML",
+    "Javascript",
+    "CSS"
+  ],
+  "summary": "Here is a short blurb about the project. Blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah."
+}

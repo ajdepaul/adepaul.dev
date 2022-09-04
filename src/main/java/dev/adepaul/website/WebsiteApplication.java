@@ -1,3 +1,7 @@
+/*
+ * Copyright © 2021 Anthony DePaul
+ * Licensed under the MIT License https://adepaul.mit-license.org/
+ */
 package dev.adepaul.website;
 
 import org.springframework.boot.SpringApplication;

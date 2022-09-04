@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,21 +11,7 @@
     <title>adepaul.dev - Contact & Profiles</title>
 </head>
 <body>
-    <header id="navbar" class="section">
-        <nav id="navbar-wide" class="content">
-            <a href="/home.html" class="btn">Home</a>
-            <a href="/projects.html" class="btn">Projects</a>
-            <a href="/contact-profiles.html" class="btn">Contact & Profiles</a>
-        </nav>
-        <nav id="navbar-menu">
-            <button class="btn"><i class="fa-solid fa-bars"></i></button>
-            <ul class="disabled">
-                <li><a href="/home.html">Home</a></li>
-                <li><a href="/projects.html">Projects</a></li>
-                <li><a href="/contact-profiles.html">Contact & Profiles</a></li>
-            </ul>
-        </nav>
-    </header>
+    <header th:replace="fragments :: header"></header>
 
     <div id="title" class="section">
         <div class="content columns">
@@ -47,9 +33,8 @@
         </div>
     </div>
 
-    <footer class="section">
-        <small>Copyright © 2022 Anthony DePaul</small>
-    </footer>
+    <footer th:replace="fragments :: footer"></footer>
+
     <script src="/script/common.js"></script>
 </body>
 </html>

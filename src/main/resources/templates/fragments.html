@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/v4-shims.min.css" integrity="sha512-juNw36A2S+8vPLyCQCBmfxRf1+gFYy07BozcavXe9adyITkvA9LuVCbkZI9kp59tjUrn/S7zeDFN1Brz1JqJnA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/style/common.css">
+</head>
+<body>
+    <header id="navbar" class="section" th:fragment="header">
+        <nav id="navbar-wide" class="content">
+            <a href="/home" class="btn">Home</a>
+            <a href="/projects" class="btn">Projects</a>
+            <a href="/contact-profiles" class="btn">Contact & Profiles</a>
+        </nav>
+        <nav id="navbar-menu">
+            <button class="btn"><i class="fa-solid fa-bars"></i></button>
+            <ul class="disabled">
+                <li><a href="/home">Home</a></li>
+                <li><a href="/projects">Projects</a></li>
+                <li><a href="/contact-profiles">Contact & Profiles</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <footer class="section" th:fragment="footer">
+        <small>Copyright © 2022 Anthony DePaul</small>
+    </footer>
+
+    <script src="/script/common.js"></script>
+</body>
