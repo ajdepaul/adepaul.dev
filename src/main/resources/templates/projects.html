@@ -11,7 +11,7 @@
     <title>adepaul.dev - Projects</title>
 </head>
 <body>
-    <header th:replace="fragments :: header"></header>
+    <header th:replace="fragments :: header" />
 
     <div id="title" class="section">
         <div class="content">
@@ -53,8 +53,8 @@
                                 <img th:src="${project.imgSrc}" th:alt="${project.imgAlt}" loading="lazy">
                             </div>
                             <div class="proj-text col">
-                                <div class="publication-date" th:text="'Article Published: ' + ${project.publicationDate}"/>
-                                <div class="completion-date" th:text="'Project Completed: ' + ${project.completionDate}" />
+                                <div class="publication-date" th:text="'Article Published: ' + ${project.publicationDateStr}"/>
+                                <div class="completion-date" th:text="'Project Completed: ' + ${project.completionDateStr}" />
                                 <p th:text="${project.summary}" />
                                 <a th:href="${project.articleLink}" class="btn">More</a>
                             </div>
@@ -65,7 +65,7 @@
         </div>
     </div>
 
-    <footer th:replace="fragments :: footer"></footer>
+    <footer th:replace="fragments :: footer" />
 
     <script src="/script/common.js"></script>
     <script src="/script/projects.js"></script>

@@ -1,10 +1,12 @@
 {
   "title": "Another Project Example",
-  "projectLink": "https://gitlab.com/",
+  "repositoryLink": "https://gitlab.com/",
   "imgSrc": "/img/vignette.png",
   "imgAlt": "Temporary blank image",
-  "publicationDate": "Dec. 12, 2011",
-  "completionDate": "Nov. 30, 2005",
+  "publicationDate": "2011-12-12",
+  "publicationDateHideDay": false,
+  "completionDate": "2005-11-30",
+  "completionDateHideDay": false,
   "technologies": [
     "Gradle",
     "Affinity Photo/Photoshop"

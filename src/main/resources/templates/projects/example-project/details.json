@@ -1,10 +1,12 @@
 {
   "title": "Example Project",
-  "projectLink": "https://github.com/",
+  "repositoryLink": null,
   "imgSrc": "/img/vignette.png",
   "imgAlt": "Temporary blank image",
-  "publicationDate": "Jan. 2000",
-  "completionDate": "Jan. 2000",
+  "publicationDate": "2000-01-01",
+  "publicationDateHideDay": true,
+  "completionDate": "2000-01-01",
+  "completionDateHideDay": true,
   "technologies": [
     "Linux",
     "Docker",

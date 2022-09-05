@@ -1,0 +1,29 @@
+body {
+    background-color: var(--gray-1);
+}
+
+/* ---------------------------------- title --------------------------------- */
+
+#title {
+    background-image: url("/img/stripe-pattern.png");
+}
+
+#title .content {
+    margin: 75px 0;
+}
+
+#title h1 {
+    color: var(--primary-color);
+}
+
+@media (max-width: 370px) {
+    #title h1 {
+        font-size: 3.157rem;
+    }
+}
+
+/* --------------------------------- footer --------------------------------- */
+
+footer {
+    background-color: var(--black);
+}

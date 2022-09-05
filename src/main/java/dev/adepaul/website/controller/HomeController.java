@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.io.IOException;
 import java.util.LinkedList;
 
-@RequestMapping("home")
 @Controller
+@RequestMapping("home")
 public class HomeController {
 
     private final ProjectsService projectsService;

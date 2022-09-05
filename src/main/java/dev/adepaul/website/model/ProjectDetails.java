@@ -4,21 +4,23 @@
  */
 package dev.adepaul.website.model;
 
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.List;
 
 public class ProjectDetails {
 
     private String articleLink;
     private String title;
-    private String projectLink;
+    private String repositoryLink;
     private String imgSrc;
     private String imgAlt;
-    private String publicationDate;
-    private String completionDate;
+    private LocalDate publicationDate;
+    private boolean publicationDateHideDay;
+    private LocalDate completionDate;
+    private boolean completionDateHideDay;
     private List<String> technologies;
-    private String technologiesStr;
     private List<String> languages;
-    private String languagesStr;
     private String summary;
 
     public String getArticleLink() {
@@ -33,8 +35,8 @@ public class ProjectDetails {
         return title;
     }
 
-    public String getProjectLink() {
-        return projectLink;
+    public String getRepositoryLink() {
+        return repositoryLink;
     }
 
     public String getImgSrc() {
@@ -45,12 +47,54 @@ public class ProjectDetails {
         return imgAlt;
     }
 
-    public String getPublicationDate() {
+    public LocalDate getPublicationDate() {
         return publicationDate;
     }
 
-    public String getCompletionDate() {
+    public boolean getPublicationDateHideDay() {
+        return publicationDateHideDay;
+    }
+
+    public String getPublicationDateStr() {
+        if (publicationDateHideDay) {
+            return getAbbreviatedMonth(publicationDate.getMonth()) + " " + publicationDate.getYear();
+        } else {
+            return getAbbreviatedMonth(publicationDate.getMonth()) + " " + publicationDate.getDayOfMonth() + ", " + publicationDate.getYear();
+        }
+    }
+
+    public LocalDate getCompletionDate() {
         return completionDate;
+    }
+
+    public boolean getCompletionDateHideDay() {
+        return completionDateHideDay;
+    }
+
+    public String getCompletionDateStr() {
+        if (completionDateHideDay) {
+            return getAbbreviatedMonth(completionDate.getMonth()) + " " + completionDate.getYear();
+        } else {
+            return getAbbreviatedMonth(completionDate.getMonth()) + " " + completionDate.getDayOfMonth() + ", " + completionDate.getYear();
+        }
+    }
+
+    private String getAbbreviatedMonth(Month month) {
+        switch (month) {
+            case JANUARY -> { return "Jan."; }
+            case FEBRUARY -> { return "Feb."; }
+            case MARCH -> { return "Mar."; }
+            case APRIL -> { return "Apr."; }
+            case MAY -> { return "May"; }
+            case JUNE -> { return "Jun."; }
+            case JULY -> { return "Jul."; }
+            case AUGUST -> { return "Aug."; }
+            case SEPTEMBER -> { return "Sep."; }
+            case OCTOBER -> { return "Oct."; }
+            case NOVEMBER -> { return "Nov."; }
+            case DECEMBER -> { return "Dec."; }
+            default -> throw new IllegalStateException("Should never happen");
+        }
     }
 
     public List<String> getTechnologies() {
@@ -58,11 +102,7 @@ public class ProjectDetails {
     }
 
     public String getTechnologiesStr() {
-        return technologiesStr;
-    }
-
-    public void setTechnologiesStr(String technologiesStr) {
-        this.technologiesStr = technologiesStr;
+        return String.join(",", technologies);
     }
 
     public List<String> getLanguages() {
@@ -70,11 +110,7 @@ public class ProjectDetails {
     }
 
     public String getLanguagesStr() {
-        return languagesStr;
-    }
-
-    public void setLanguagesStr(String languagesStr) {
-        this.languagesStr = languagesStr;
+        return String.join(",", languages);
     }
 
     public String getSummary() {

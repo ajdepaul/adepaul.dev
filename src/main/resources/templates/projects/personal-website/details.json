@@ -1,10 +1,12 @@
 {
   "title": "Personal Website",
-  "projectLink": "https://github.com/ajdepaul/adepaul.dev",
+  "repositoryLink": "https://github.com/ajdepaul/adepaul.dev",
   "imgSrc": "/img/vignette.png",
   "imgAlt": "Temporary blank image",
-  "publicationDate": "Sep. 1, 2022",
-  "completionDate": "Sep. 1, 2022",
+  "publicationDate": "2022-09-01",
+  "publicationDateHideDay": false,
+  "completionDate": "2022-09-01",
+  "completionDateHideDay": false,
   "technologies": [
     "Linux",
     "Docker",

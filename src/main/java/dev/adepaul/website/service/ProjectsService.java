@@ -4,8 +4,9 @@
  */
 package dev.adepaul.website.service;
 
-import com.google.gson.Gson;
+import com.google.gson.*;
 import dev.adepaul.website.model.ProjectDetails;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
@@ -20,7 +21,8 @@ import java.util.List;
 @Service
 public class ProjectsService {
 
-    private final Gson gson = new Gson();
+    @Autowired
+    private Gson gson;
 
     @Value("classpath:templates/projects/featured.json")
     private Resource featuredProjectsRes;
@@ -43,9 +45,8 @@ public class ProjectsService {
         return Arrays.stream(projDetailsResources).map(res -> {
 
             try {
-                var projectDetails = gson.fromJson(new InputStreamReader(res.getInputStream()), ProjectDetails.class);
+                final var projectDetails = gson.fromJson(new InputStreamReader(res.getInputStream()), ProjectDetails.class);
                 projectDetails.setArticleLink("/projects/" + res.getFile().getParentFile().getName());
-
                 return projectDetails;
             } catch (IOException e) {
                 throw new RuntimeException(e); // should never happen
