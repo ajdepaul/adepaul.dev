@@ -86,7 +86,7 @@ function bootSequenceNextGroup() {
     // update time stamps
     const date = new Date()
     const year = date.getFullYear()
-    const month = addPrefix("0", date.getMonth().toString(), 2)
+    const month = addPrefix("0", (date.getMonth() + 1).toString(), 2)
     const day = addPrefix("0", date.getDate().toString(), 2)
     const hours = addPrefix("0", date.getHours().toString(), 2)
     const minutes = addPrefix("0", date.getMinutes().toString(), 2)
