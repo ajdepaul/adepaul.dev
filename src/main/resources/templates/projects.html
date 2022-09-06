@@ -24,13 +24,13 @@
             <div id="tags" class="columns">
                 <div class="col">
                     <h3>Technologies</h3>
-                    <div class="tagButtons">
+                    <div class="tagButtons" id="technologyButtons">
                         <button class="btn" th:each="technology: ${technologies}" th:text="${technology}"/>
                     </div>
                 </div>
                 <div class="col">
                     <h3>Languages</h3>
-                    <div class="tagButtons">
+                    <div class="tagButtons" id="languageButtons">
                         <button class="btn" th:each="language: ${languages}" th:text="${language}"/>
                     </div>
                 </div>

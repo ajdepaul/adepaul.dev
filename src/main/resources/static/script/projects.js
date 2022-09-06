@@ -1,10 +1,14 @@
-const tagButtons = document.querySelectorAll('#tags .btn')
+const allTagButtons = document.querySelectorAll('#tags .tagButtons button')
+const technologyButtons = document.querySelectorAll('#technologyButtons button')
+const languageButtons = document.querySelectorAll('#languageButtons button')
+
 const searchInput = document.querySelector('#search input')
 const projects = Array.from(document.querySelectorAll('#projects .project-container'))
     .map(elem => {
         return {
             "title": elem.querySelector('h4').innerText,
-            "tags": (`${elem.dataset.technologies},${elem.dataset.languages}`).split(','),
+            "technologies": elem.dataset.technologies.split(','),
+            "languages": elem.dataset.languages.split(','),
             "elem": elem
         }
     })
@@ -17,8 +21,8 @@ projects.forEach(proj => {
     if (charCode % 2 === 0) columns.classList.add('reversed')
 })
 
-// tag buttons
-tagButtons.forEach(btn => {
+// tag buttons events
+allTagButtons.forEach(btn => {
 
     btn.addEventListener('click', () => {
 
@@ -44,12 +48,22 @@ function filterProjects() {
 
         proj.elem.classList.remove('disabled')
 
-        // tags filter
-        tagButtons.forEach(button => {
+        // technologies filter
+        technologyButtons.forEach(button => {
             const buttonText = button.innerText
-            if (button.classList.contains('require') && !proj.tags.includes(buttonText)) {
+            if (button.classList.contains('require') && !proj.technologies.includes(buttonText)) {
                 proj.elem.classList.add('disabled')
-            } else if (button.classList.contains('exclude') && proj.tags.includes(buttonText)) {
+            } else if (button.classList.contains('exclude') && proj.technologies.includes(buttonText)) {
+                proj.elem.classList.add('disabled')
+            }
+        })
+
+        // languages filter
+        languageButtons.forEach(button => {
+            const buttonText = button.innerText
+            if (button.classList.contains('require') && !proj.languages.includes(buttonText)) {
+                proj.elem.classList.add('disabled')
+            } else if (button.classList.contains('exclude') && proj.languages.includes(buttonText)) {
                 proj.elem.classList.add('disabled')
             }
         })

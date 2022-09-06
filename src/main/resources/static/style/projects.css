@@ -125,11 +125,11 @@
     flex-direction: row-reverse;
 }
 
-#projects .project:nth-of-type(odd) {
+#projects .project-container:nth-of-type(odd) .project {
     border-color: var(--primary-color-dark);
 }
 
-#projects .project:nth-of-type(odd) .project-title {
+#projects .project-container:nth-of-type(odd) .project-title {
     background-color: var(--primary-color-dark);
 }
 
