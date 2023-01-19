@@ -42,7 +42,7 @@ jobs:
 
     steps:
       - name: Canister Login
-        run: podman login --username=${{ secrets.CANISTER_ID }} --password=${{ secrets.CANISTER_PASSWORD }} cloud .canister.io:5000
+        run: podman login --username=${{ secrets.CANISTER_ID }} --password=${{ secrets.CANISTER_PASSWORD }} cloud.canister.io:5000
 
       - name: Remove old container and images
         run: |
