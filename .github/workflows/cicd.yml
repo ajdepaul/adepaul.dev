@@ -43,7 +43,7 @@ jobs:
     steps:
       - name: Pull and Run Docker Image
         run: |
-          docker stop adepaul-dev
-          docker container prune -f
-          docker image prune -af
-          docker run --name adepaul-dev -d -p 8080:8080 cloud.canister.io:5000/${{ secrets.CANISTER_ID }}/adepaul.dev:latest
+          podman stop adepaul-dev
+          podman container prune -f
+          podman image prune -af
+          podman run --name adepaul-dev -d -p 8080:8080 cloud.canister.io:5000/${{ secrets.CANISTER_ID }}/adepaul.dev:latest
