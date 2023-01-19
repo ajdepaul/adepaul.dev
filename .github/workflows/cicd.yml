@@ -40,6 +40,5 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      name: Pull and Run Docker Image
-      run: |
-        docker run -d -p 8080:8080 cloud.canister.io:5000/${{ secrets.CANISTER_ID }}/adepaul.dev:latest
+      - name: Pull and Run Docker Image
+        run: docker run -d -p 8080:8080 cloud.canister.io:5000/${{ secrets.CANISTER_ID }}/adepaul.dev:latest
