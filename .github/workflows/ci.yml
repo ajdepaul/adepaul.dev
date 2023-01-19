@@ -22,16 +22,18 @@ jobs:
           java-version: '18'
           distribution: 'corretto'
 
-      - name: Canister Login
-        run: docker login --username=${{ secrets.CANISTER_ID }} --password=${{ secrets.CANISTER_PASSWORD }} cloud.canister.io:5000
-
-      - name: Build Docker Image with Gradle
+      - name: Gradle Build
         run: |
           chmod +x ./gradlew
           ./gradlew build
-          docker build -t adepaul.dev .
 
-      - name: Push Docker Image to Registry
+      - name: Build Docker Image
+        run: docker build -t adepaul.dev .
+
+      - name: Docker Hub Login
+        run: docker login --username=${{ secrets.DOCKER_USERNAME }} --password=${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Push Docker Image
         run: |
-          docker image tag adepaul.dev cloud.canister.io:5000/${{ secrets.CANISTER_ID }}/adepaul.dev
-          docker image push cloud.canister.io:5000/${{ secrets.CANISTER_ID }}/adepaul.dev
+          docker image tag adepaul.dev ${{ secrets.DOCKER_USERNAME }}/private:adepaul.dev
+          docker image push ${{ secrets.DOCKER_USERNAME }}/private:adepaul.dev
