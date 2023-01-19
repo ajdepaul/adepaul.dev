@@ -26,9 +26,9 @@ jobs:
         run: docker login --username=${{ secrets.CANISTER_ID }} --password=${{ secrets.CANISTER_PASSWORD }} cloud.canister.io:5000
 
       - name: Build Docker Image with Gradle
-        uses: gradle/gradle-build-action@v2
-        with:
-          arguments: bootBuildImage --imageName=adepaul.dev
+        run: |
+          chmod +x ./gradlew
+          ./gradlew bootBuildImage --imageName=adepaul.dev
 
       - name: Push Docker Image to Registry
         run: |
