@@ -22,7 +22,7 @@ jobs:
           java-version: '18'
           distribution: 'corretto'
 
-      - name: Docker Canister Login
+      - name: Canister Login
         run: docker login --username=${{ secrets.CANISTER_ID }} --password=${{ secrets.CANISTER_PASSWORD }} cloud.canister.io:5000
 
       - name: Build Docker Image with Gradle
@@ -41,11 +41,16 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Pull and Run Docker Image
+      - name: Canister Login
+        run: podman login --username=${{ secrets.CANISTER_ID }} --password=${{ secrets.CANISTER_PASSWORD }} cloud .canister.io:5000
+
+      - name: Remove old container and images
         run: |
           # https://stackoverflow.com/questions/34228864/stop-and-delete-docker-container-if-its-running
           podman ps -q --filter "name=adepaul-dev" | grep -q . && podman stop adepaul-dev && podman rm -f adepaul-dev
           # if the container is not running
           podman ps -aq --filter "name=adepaul-dev" | grep -q . && podman rm -f adepaul-dev
           podman image prune -af
-          podman run --name adepaul-dev -d -p 8080:8080 cloud.canister.io:5000/${{ secrets.CANISTER_ID }}/adepaul.dev:latest
+
+      - name: Pull and Run Docker Image
+        run: podman run --name adepaul-dev -d -p 8080:8080 cloud.canister.io:5000/${{ secrets.CANISTER_ID }}/adepaul.dev:latest
