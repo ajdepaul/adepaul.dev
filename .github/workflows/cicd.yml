@@ -43,7 +43,7 @@ jobs:
     steps:
       - name: Pull and Run Docker Image
         run: |
-          podman stop adepaul-dev
-          podman container prune -f
+          # https://stackoverflow.com/questions/34228864/stop-and-delete-docker-container-if-its-running
+          podman ps -q --filter "name=adepaul-dev" | grep -q . && podman stop adepaul-dev && docker rm -f adepaul-dev
           podman image prune -af
           podman run --name adepaul-dev -d -p 8080:8080 cloud.canister.io:5000/${{ secrets.CANISTER_ID }}/adepaul.dev:latest
