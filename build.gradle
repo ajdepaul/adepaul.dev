@@ -6,8 +6,12 @@ plugins {
 }
 
 group = 'dev.adepaul'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '19'
+version = '1.0.0'
+sourceCompatibility = '18'
+
+jar {
+	enabled = false // disables -plain.jar file
+}
 
 repositories {
 	mavenCentral()
