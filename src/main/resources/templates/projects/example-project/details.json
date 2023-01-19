@@ -1,4 +1,5 @@
 {
+  "articleLink": "projects/example-project",
   "title": "Example Project",
   "repositoryLink": null,
   "imgSrc": "/img/vignette.png",
@@ -9,8 +10,8 @@
   "completionDateHideDay": true,
   "technologies": [
     "Linux",
-    "Docker",
-    "Affinity Photo/Photoshop"
+    "Docker/Podman",
+    "Photoshop/Affinity Photo"
   ],
   "languages": [
     "Java",

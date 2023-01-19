@@ -1,6 +1,5 @@
 /*
  * Copyright © 2021 Anthony DePaul
- * Licensed under the MIT License https://adepaul.mit-license.org/
  */
 package dev.adepaul.website.service;
 
@@ -29,7 +28,7 @@ public class ProjectsService {
 
     public List<ProjectDetails> getFeaturedProjectDetails() throws IOException {
         var featuredProjects = gson.fromJson(new InputStreamReader(featuredProjectsRes.getInputStream()), List.class)
-                .stream().map(proj -> "/projects/" + proj).toList();
+                .stream().map(proj -> "projects/" + proj).toList();
 
         return getAllProjectDetails().stream()
                 .filter(proj -> featuredProjects.contains(proj.getArticleLink()))
@@ -45,9 +44,7 @@ public class ProjectsService {
         return Arrays.stream(projDetailsResources).map(res -> {
 
             try {
-                final var projectDetails = gson.fromJson(new InputStreamReader(res.getInputStream()), ProjectDetails.class);
-                projectDetails.setArticleLink("/projects/" + res.getFile().getParentFile().getName());
-                return projectDetails;
+                return gson.fromJson(new InputStreamReader(res.getInputStream()), ProjectDetails.class);
             } catch (IOException e) {
                 throw new RuntimeException(e); // should never happen
             }

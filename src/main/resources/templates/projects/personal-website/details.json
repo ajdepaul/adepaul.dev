@@ -1,17 +1,21 @@
 {
+  "articleLink": "projects/personal-website",
   "title": "Personal Website",
   "repositoryLink": "https://github.com/ajdepaul/adepaul.dev",
-  "imgSrc": "/img/vignette.png",
-  "imgAlt": "Temporary blank image",
-  "publicationDate": "2022-09-01",
+  "imgSrc": "/img/personal-website/thumbnail.png",
+  "imgAlt": "Website intro animation screenshot",
+  "publicationDate": "2023-01-18",
   "publicationDateHideDay": false,
-  "completionDate": "2022-09-01",
+  "completionDate": "2023-01-18",
   "completionDateHideDay": false,
   "technologies": [
     "Linux",
-    "Docker",
-    "Affinity Photo/Photoshop",
-    "Gradle"
+    "Docker/Podman",
+    "Photoshop/Affinity Photo",
+    "Gradle",
+    "Cloudflare",
+    "GitHub Actions",
+    "Spring Boot"
   ],
   "languages": [
     "Java",
@@ -19,5 +23,5 @@
     "Javascript",
     "CSS"
   ],
-  "summary": "This is about this website wowowow."
+  "summary": "Personal showcase website containing detailed write-ups of projects, along with professional and educational background and contact information."
 }

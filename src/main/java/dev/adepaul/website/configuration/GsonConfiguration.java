@@ -1,6 +1,5 @@
 /*
  * Copyright © 2021 Anthony DePaul
- * Licensed under the MIT License https://adepaul.mit-license.org/
  */
 package dev.adepaul.website.configuration;
 
@@ -25,7 +24,7 @@ public class GsonConfiguration {
                 .create();
     }
 
-    private class LocalDateAdapter implements JsonSerializer<LocalDate>, JsonDeserializer<LocalDate> {
+    private static class LocalDateAdapter implements JsonSerializer<LocalDate>, JsonDeserializer<LocalDate> {
 
         @Override
         public JsonElement serialize(LocalDate src, Type typeOfSrc, JsonSerializationContext context) {
@@ -38,7 +37,7 @@ public class GsonConfiguration {
         }
     }
 
-    private class LocalDateTimeAdapter implements JsonSerializer<LocalDateTime>, JsonDeserializer<LocalDateTime> {
+    private static class LocalDateTimeAdapter implements JsonSerializer<LocalDateTime>, JsonDeserializer<LocalDateTime> {
 
         @Override
         public JsonElement serialize(LocalDateTime src, Type typeOfSrc, JsonSerializationContext context) {

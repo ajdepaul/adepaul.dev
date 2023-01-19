@@ -1,6 +1,5 @@
 /*
  * Copyright © 2021 Anthony DePaul
- * Licensed under the MIT License https://adepaul.mit-license.org/
  */
 package dev.adepaul.website.model;
 
@@ -25,10 +24,6 @@ public class ProjectDetails {
 
     public String getArticleLink() {
         return articleLink;
-    }
-
-    public void setArticleLink(String articleLink) {
-        this.articleLink = articleLink;
     }
 
     public String getTitle() {

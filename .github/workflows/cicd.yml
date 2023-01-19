@@ -1,0 +1,45 @@
+name: Build and deploy website
+
+on:
+  push:
+    branches: [ "master" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Master
+      - uses: actions/checkout@v3
+
+      - name: Set up JDK 19
+        uses: actions/setup-java@v3
+        with:
+          java-version: '19'
+          distribution: 'corretto'
+
+      - name: Docker Canister Login
+        run: docker login --username=${{ secrets.CANISTER_ID }} --password=${{ secrets.CANISTER_PASSWORD }} cloud.canister.io:5000
+
+      - name: Build Docker Image with Gradle
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: bootBuildImage --imageName=adepaul.dev
+
+      - name: Push Docker Image to Registry
+        run: |
+          docker image tag adepaul.dev cloud.canister.io:5000/${{ secrets.CANISTER_ID }}/adepaul.dev
+          docker image push cloud.canister.io:5000/${{ secrets.CANISTER_ID }}/adepaul.dev
+
+  deploy:
+    needs: build
+    runs-on: self-hosted
+
+    steps:
+      name: Pull and Run Docker Image
+      run: |
+        docker run -d -p 8080:8080 cloud.canister.io:5000/${{ secrets.CANISTER_ID }}/adepaul.dev:latest

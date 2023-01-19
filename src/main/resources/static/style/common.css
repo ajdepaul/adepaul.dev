@@ -279,6 +279,7 @@ a:hover, button:hover {
 
 .project-content img {
     background-image: url("/img/stripe-pattern.png");
+    color: #ffffff;
     width: 100%;
     max-width: 100%;
     border: 3px solid var(--black);

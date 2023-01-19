@@ -1,4 +1,5 @@
 {
+  "articleLink": "projects/example-project2",
   "title": "Another Project Example",
   "repositoryLink": "https://gitlab.com/",
   "imgSrc": "/img/vignette.png",
@@ -9,7 +10,7 @@
   "completionDateHideDay": false,
   "technologies": [
     "Gradle",
-    "Affinity Photo/Photoshop"
+    "Photoshop/Affinity Photo"
   ],
   "languages": [
     "Kotlin",

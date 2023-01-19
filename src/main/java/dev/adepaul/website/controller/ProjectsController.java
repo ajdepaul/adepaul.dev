@@ -1,6 +1,5 @@
 /*
  * Copyright © 2021 Anthony DePaul
- * Licensed under the MIT License https://adepaul.mit-license.org/
  */
 package dev.adepaul.website.controller;
 
@@ -50,7 +49,7 @@ public class ProjectsController {
     public String project(Model model, @PathVariable("project") String project, HttpServletResponse response) throws IOException {
 
         final var projectDetails = projectsService.getAllProjectDetails().stream()
-                .filter(proj -> proj.getArticleLink().equals("/projects/" + project))
+                .filter(proj -> proj.getArticleLink().equals("projects/" + project))
                 .findFirst();
 
         if (projectDetails.isPresent()) {
