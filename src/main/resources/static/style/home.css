@@ -145,9 +145,11 @@
     margin: 50px 0;
 }
 
+#projects .col { max-width: 50%; }
+
 /* in between column spacing */
-#projects .col:not(:first-child) { margin-left: 30px; }
-#projects .col:not(:last-child) { margin-right: 30px; }
+#projects .col:not(:first-child) { padding-left: 30px; }
+#projects .col:not(:last-child) { padding-right: 30px; }
 
 #projects h3 {
     margin-top: 70px;
@@ -157,6 +159,10 @@
     border-width: 0;
     border-bottom-width: 2px;
     border-color: var(--primary-color);
+}
+
+#projects h4 {
+    text-overflow: ellipsis;
 }
 
 #projects .project {
@@ -250,10 +256,12 @@
         flex-direction: column;
     }
 
+    #projects .col { max-width: none; }
+
     #projects .col:not(:first-child),
     #projects .col:not(:last-child) {
-        margin-left: 0;
-        margin-right: 0;
+        padding-left: 0;
+        padding-right: 0;
     }
 
     #projects h3 {

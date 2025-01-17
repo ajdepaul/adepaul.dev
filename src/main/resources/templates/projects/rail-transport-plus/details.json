@@ -1,0 +1,20 @@
+{
+  "isPublished": false,
+  "articleLink": "projects/rail-transport-plus",
+  "title": "RailTransportPlus",
+  "repositoryLink": "https://github.com/ajdepaul/adepaul.dev",
+  "imgSrc": "/img/vignette.png",
+  "imgAlt": "Website intro animation screenshot",
+  "publicationDate": "2023-04-10",
+  "publicationDateHideDay": false,
+  "completionDate": "2023-01-19",
+  "completionDateHideDay": false,
+  "technologies": [
+    "Gradle",
+    "Video Game Modding"
+  ],
+  "languages": [
+    "Java"
+  ],
+  "summary": "RailTransportPlus is a mod for the video game Minecraft that enables linked minecart trains and increased max speed using preexisting game mechanics."
+}

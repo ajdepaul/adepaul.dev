@@ -1,0 +1,19 @@
+{
+  "isPublished": true,
+  "articleLink": "projects/shorthand-commands",
+  "title": "ShorthandCommands",
+  "repositoryLink": "https://github.com/ajdepaul/adepaul.dev",
+  "imgSrc": "/img/vignette.png",
+  "imgAlt": "Website intro animation screenshot",
+  "publicationDate": "2023-04-10",
+  "publicationDateHideDay": false,
+  "completionDate": "2023-01-19",
+  "completionDateHideDay": false,
+  "technologies": [
+    "Gradle"
+  ],
+  "languages": [
+    "Kotlin"
+  ],
+  "summary": "ShorthandCommands is a tool to give Minecraft datapack developers additional functionality in .mcfunction files."
+}

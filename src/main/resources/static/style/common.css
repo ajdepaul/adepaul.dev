@@ -262,6 +262,7 @@ a:hover, button:hover {
     width: 100%;
     color: #ffffff;
     background-color: var(--primary-color);
+    white-space: nowrap;
     overflow: hidden;
 }
 

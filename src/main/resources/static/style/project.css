@@ -284,6 +284,10 @@ body {
     width: auto;
 }
 
+#article .project-content .fill-width {
+    width: 100%;
+}
+
 /* --------------------------------- footer --------------------------------- */
 
 footer {
