@@ -259,6 +259,30 @@ body {
     max-height: calc(1rem * 1.5 * 35);
 }
 
+#article .project-content a.pre-src {
+    width: 100%;
+    padding-left: 5px;
+    padding-top: 2px;
+    color: #fff;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background-color: var(--black);
+    border: 3px solid var(--black);
+    box-shadow: 10px 10px 0 0 var(--transp-black);
+    border-radius: 5px 5px 0 0;
+    margin-bottom: 0;
+}
+
+#article .project-content a.pre-src:hover {
+    color: var(--primary-color);
+}
+
+#article .project-content a.pre-src + pre {
+    border-radius: 0 0px 5px 5px !important;
+    border-top: 0 !important;
+}
+
 /* * note: img class sizes don't work when img is also a col */
 #article .project-content img.small:not(.col) {
     max-height: 264px;
@@ -282,6 +306,10 @@ body {
     /* based on 16:9 image */
     max-height: 616px;
     width: auto;
+}
+
+#article .project-content .fill-width {
+    width: 100%;
 }
 
 /* --------------------------------- footer --------------------------------- */

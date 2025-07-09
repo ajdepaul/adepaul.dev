@@ -9,6 +9,7 @@ import java.util.List;
 
 public class ProjectDetails {
 
+    private boolean isPublished;
     private String articleLink;
     private String title;
     private String repositoryLink;
@@ -21,6 +22,10 @@ public class ProjectDetails {
     private List<String> technologies;
     private List<String> languages;
     private String summary;
+
+    public boolean isPublished() {
+        return isPublished;
+    }
 
     public String getArticleLink() {
         return articleLink;

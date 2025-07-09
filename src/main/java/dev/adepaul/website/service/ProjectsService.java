@@ -3,7 +3,9 @@
  */
 package dev.adepaul.website.service;
 
-import com.google.gson.*;
+import com.google.gson.Gson;
+import com.google.gson.JsonParseException;
+import com.google.gson.reflect.TypeToken;
 import dev.adepaul.website.model.ProjectDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,8 +29,12 @@ public class ProjectsService {
     private Resource featuredProjectsRes;
 
     public List<ProjectDetails> getFeaturedProjectDetails() throws IOException {
-        var featuredProjects = gson.fromJson(new InputStreamReader(featuredProjectsRes.getInputStream()), List.class)
-                .stream().map(proj -> "projects/" + proj).toList();
+        final var projectObjs = gson.fromJson(
+                new InputStreamReader(featuredProjectsRes.getInputStream()),
+                new TypeToken<List<String>>() {}.getType()
+        );
+        @SuppressWarnings("unchecked") final var projects = (List<String>) projectObjs;
+        final var featuredProjects = projects.stream().map(proj -> "projects/" + proj).toList();
 
         return getAllProjectDetails().stream()
                 .filter(proj -> featuredProjects.contains(proj.getArticleLink()))
@@ -36,18 +42,20 @@ public class ProjectsService {
                 .toList();
     }
 
-    // TODO look into caching https://www.javatpoint.com/spring-boot-caching
     public List<ProjectDetails> getAllProjectDetails() throws IOException {
-        Resource[] projDetailsResources= new PathMatchingResourcePatternResolver()
+        Resource[] projDetailsResources = new PathMatchingResourcePatternResolver()
                 .getResources("templates/projects/*/details.json");
 
         return Arrays.stream(projDetailsResources).map(res -> {
-
-            try {
-                return gson.fromJson(new InputStreamReader(res.getInputStream()), ProjectDetails.class);
-            } catch (IOException e) {
-                throw new RuntimeException(e); // should never happen
-            }
-        }).toList();
+                    try (final var reader = new InputStreamReader(res.getInputStream())) {
+                        return gson.fromJson(reader, ProjectDetails.class);
+                    } catch (IOException e) {
+                        throw new RuntimeException("Error reading project details from resource: " + res.getFilename(), e);
+                    } catch (JsonParseException e) {
+                        throw new JsonParseException("Error parsing JSON from resource: " + res.getFilename(), e);
+                    }
+                })
+                .filter(ProjectDetails::isPublished)
+                .toList();
     }
 }

@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.LinkedList;
 
 @Controller
-@RequestMapping("home")
+@RequestMapping("/")
 public class HomeController {
 
     private final ProjectsService projectsService;

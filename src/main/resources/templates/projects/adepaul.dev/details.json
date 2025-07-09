@@ -1,0 +1,27 @@
+{
+  "isPublished": true,
+  "articleLink": "projects/adepaul.dev",
+  "title": "adepaul.dev",
+  "repositoryLink": "https://github.com/ajdepaul/adepaul.dev",
+  "imgSrc": "/img/portfolio-website/animated-thumbnail.gif",
+  "imgAlt": "Website intro animation screenshot",
+  "publicationDate": "2023-04-10",
+  "publicationDateHideDay": false,
+  "completionDate": "2023-01-19",
+  "completionDateHideDay": false,
+  "technologies": [
+    "Linux",
+    "Docker",
+    "Photoshop/Affinity Photo",
+    "Gradle",
+    "GitHub Actions",
+    "Spring Boot"
+  ],
+  "languages": [
+    "Java",
+    "HTML",
+    "JavaScript",
+    "CSS"
+  ],
+  "summary": "adepaul.dev is my portfolio website containing detailed write-ups of my projects, along with my educational background and contact information."
+}
