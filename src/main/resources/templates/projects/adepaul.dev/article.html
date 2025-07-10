@@ -49,19 +49,20 @@
                     The site is built using <a href="https://spring.io/projects/spring-boot">Spring Boot</a>, a popular
                     Java framework primarily used for building web applications. As this website was my introduction to
                     the web development world, I thought choosing a popular framework was a good choice. Throughout my
-                    experience of building the site, I faced multiple challenges that I thought were worth sharing.
+                    experience of building the site, I have overcome multiple challenges that I thought were worth
+                    sharing.
                 </p>
 
-                <h2 id="article-structure">Article Structure</h2>
+                <h2 id="article-structure">Write-Up Structure</h2>
 
                 <p>
-                    The article write-ups are structured in a way such that the metadata of each project is easily
-                    accessible and the styling of each article is consistent and easily modified. To accomplish this,
-                    the project's resource directory stores JSON files containing details about each project and a
-                    Thymeleaf fragment containing the written content of each project article.
-                    <a href="https://www.thymeleaf.org/">Thymeleaf</a> is a template  engine commonly used  with Spring
-                    that allows structured parts of HTML to be joined to make dynamic layouts. The article structure
-                    consists of:
+                    The project write-ups are structured in a way that each project contains its own unique consistently
+                    structured metadata that makes altering common fragments across all project articles simple and
+                    easy. To accomplish this, the website's resource directory stores JSON files containing details
+                    about each project along with a Thymeleaf fragment containing the written content of each project
+                    article. <a href="https://www.thymeleaf.org/">Thymeleaf</a> is a template engine commonly used with
+                    Spring that allows structured parts of HTML to be joined to make dynamic layouts. The Thymeleaf
+                    article structure consists of:
                 </p>
 
                 <ul>
@@ -71,42 +72,45 @@
                     <li>an article template to combine everything</li>
                 </ul>
 
+<!--                <p>-->
+<!--                    Common article styling is kept in its own CSS file that makes modifying styles across all projects-->
+<!--                    easy. For example, the styling used for the following code block is as follows:-->
+<!--                </p>-->
+
+<!--                <pre class="medium"><code>-->
+<!--                    #article .project-content p code {-->
+<!--                        padding: 0 5px;-->
+<!--                        border-radius: 5px;-->
+<!--                        background-color: var(&#45;&#45;transp-black);-->
+<!--                    }-->
+
+<!--                    #article .project-content pre {-->
+<!--                        width: 100%;-->
+<!--                        padding: 10px;-->
+<!--                        background-color: var(&#45;&#45;gray-3);-->
+<!--                        color: var(&#45;&#45;light-gray);-->
+<!--                        border: 3px solid var(&#45;&#45;black);-->
+<!--                        box-shadow: 10px 10px 0 0 var(&#45;&#45;transp-black);-->
+<!--                        border-radius: 5px;-->
+<!--                        overflow: auto;-->
+<!--                    }-->
+
+<!--                    #article .project-content pre.medium {-->
+<!--                        max-height: calc(1rem * 1.5 * 16);-->
+<!--                    }-->
+<!--                </code></pre>-->
+
                 <p>
-                    Common article styling is kept in its own CSS file that makes modifying styles across all projects
-                    easy. For example, the styling used for the following code block is as follows:
-                </p>
-
-                <pre class="medium"><code>
-                    #article .project-content p code {
-                        padding: 0 5px;
-                        border-radius: 5px;
-                        background-color: var(--transp-black);
-                    }
-
-                    #article .project-content pre {
-                        width: 100%;
-                        padding: 10px;
-                        background-color: var(--gray-3);
-                        color: var(--light-gray);
-                        border: 3px solid var(--black);
-                        box-shadow: 10px 10px 0 0 var(--transp-black);
-                        border-radius: 5px;
-                        overflow: auto;
-                    }
-
-                    #article .project-content pre.medium {
-                        max-height: calc(1rem * 1.5 * 16);
-                    }
-                </code></pre>
-
-                <p>
-                    Each project article has a corresponding <code>details.json</code> resource file used to store
+                    Each project write-up has a corresponding <code>details.json</code> resource file used to store
                     metadata about the project. This metadata is used to fill out relevant sections of the article such
                     as the project title, a repository link, and thumbnail image path. The technologies and languages
                     used in the project for easily navigating the articles are also defined here. The
-                    <code>details.json</code> file for this particular article looks like:
+                    <code>details.json</code> file for this write-up looks like:
                 </p>
 
+                <a href="https://github.com/ajdepaul/adepaul.dev/blob/master/src/main/resources/templates/projects/adepaul.dev/details.json" class="pre-src">
+                    src/main/resources/templates/projects/adepaul.dev/details.json
+                </a>
                 <pre class="medium"><code>
                     {
                       "isPublished": true,
@@ -137,10 +141,10 @@
                     }
                 </code></pre>
 
-                <h2 id="browsing-articles">Browsing Articles</h2>
+                <h2 id="browsing-articles">Browsing Write-Ups</h2>
 
                 <p>
-                    The <a href="/projects">projects page</a> use a filter tool to make navigating the available
+                    The <a href="/projects">projects page</a> uses a filter tool to make navigating the available
                     articles easier. By clicking on one of the listed technology or language buttons, that button
                     changes mode to either "ignore" (gray), "require" (blue), or "exclude" (red). When a button's state
                     changes, the article list updates by filtering the available projects that satisfy the selected
@@ -149,8 +153,9 @@
                 </p>
 
                 <p>
-                    The "projects" Spring controller is configured to load the projects' technology and language lists from their
-                    corresponding JSON files and then passes those lists to the model for Thymeleaf template to handle.
+                    The "projects" Spring controller is configured to load the projects' technology and language lists
+                    from their corresponding JSON files. That data is then passed to the "projects" model for the
+                    Thymeleaf template to handle.
                 </p>
 
                 <pre class="medium"><code>
