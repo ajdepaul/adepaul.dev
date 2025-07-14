@@ -292,6 +292,9 @@ a:hover, button:hover {
 /* --------------------------------- footer --------------------------------- */
 
 footer {
+    flex-direction: row !important;
+    justify-content: center;
+    gap: 10px;
     color: var(--light-gray);
     margin-top: auto;
     padding: 10px;

@@ -1,0 +1,51 @@
+body {
+    background-color: var(--gray-1);
+}
+
+/* ---------------------------------- title --------------------------------- */
+
+#title {
+    background-image: url("/img/stripe-pattern.png");
+}
+
+#title .content {
+    margin: 75px 0;
+}
+
+#title h1 {
+    color: var(--primary-color);
+}
+
+@media (max-width: 370px) {
+    #title h1 {
+        font-size: 3.157rem;
+    }
+}
+
+/* -------------------------------- licenses -------------------------------- */
+
+#licenses {
+    margin: 50px 0;
+}
+
+#licenses .licenses-content {
+    padding: 25px;
+}
+
+#licenses .licenses-content > *:not(:last-child) {
+    padding-bottom: 25px;
+}
+
+#licenses .licenses-content p {
+    white-space: pre-line;
+}
+
+#licenses .licenses-content ul > li:before {
+    content: "- ";
+}
+
+/* --------------------------------- footer --------------------------------- */
+
+footer {
+    background-color: var(--black);
+}

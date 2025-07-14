@@ -53,6 +53,16 @@
                     sharing.
                 </p>
 
+                <p>
+                    If you are interested in website projects that are more modern, check out my other write-ups:
+                </p>
+
+                <ul>
+                    <li><a href="/projects/poetry-site">Poetry Site</a> (Next.js)</li>
+                    <li><a href="/projects/anthonydepaulmasonryinc.com">anthonydepaulmasonryinc.com</a> (Next.js)</li>
+                    <li><a href="/projects/SDPS">SDPS</a> (Tauri/Vite.js)</li>
+                </ul>
+
                 <h2 id="article-structure">Write-Up Structure</h2>
 
                 <p>
@@ -158,6 +168,9 @@
                     Thymeleaf template to handle.
                 </p>
 
+                <a href="https://github.com/ajdepaul/adepaul.dev/blob/master/src/main/java/dev/adepaul/website/controller/ProjectsController.java" class="pre-src">
+                    src/main/java/dev/adepaul/website/controller/ProjectsController.java
+                </a>
                 <pre class="medium"><code>
                     @GetMapping
                     public String projects(Model model) throws IOException {
@@ -185,6 +198,9 @@
                     project element.
                 </p>
 
+                <a href="https://github.com/ajdepaul/adepaul.dev/blob/master/src/main/resources/templates/projects.html" class="pre-src">
+                    src/main/resources/templates/projects.html
+                </a>
                 <pre class="medium"><code>
                     &lt;div id="projects" class="section"&gt;
                         &lt;div class="content"&gt;
@@ -214,6 +230,9 @@
                     Then, the sorting takes place on client-side JavaScript. First, the data for each project is loaded:
                 </p>
 
+                <a href="https://github.com/ajdepaul/adepaul.dev/blob/master/src/main/resources/static/script/projects.js" class="pre-src">
+                    src/main/resources/static/script/projects.js
+                </a>
                 <pre class="medium"><code>
                     const projects = Array.from(document.querySelectorAll('#projects .project-container'))
                         .map(elem => {
@@ -230,6 +249,9 @@
                     Finally, whenever the inputs are updated, the projects are filtered according to the provided inputs.
                 </p>
 
+                <a href="https://github.com/ajdepaul/adepaul.dev/blob/master/src/main/resources/static/script/projects.js" class="pre-src">
+                    src/main/resources/static/script/projects.js
+                </a>
                 <pre class="medium"><code>
                     function filterProjects() {
 
