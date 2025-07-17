@@ -217,8 +217,17 @@ body {
     width: 100%;
 }
 
+#article .project-content li > ul,
+#article .project-content li > ol {
+    margin-left: 20px;
+}
+
 #article .project-content ul > li:before {
     content: "- ";
+}
+
+#article .project-content ul > li:not(:first-child) {
+    margin-top: 10px;
 }
 
 #article .project-content ol > li {
@@ -226,10 +235,14 @@ body {
     list-style-position: inside;
 }
 
-#article .project-content p code {
+#article .project-content code {
     padding: 0 5px;
     border-radius: 5px;
     background-color: var(--transp-black);
+}
+
+#article .project-content .nowrap {
+    white-space: nowrap;
 }
 
 #article .project-content pre {

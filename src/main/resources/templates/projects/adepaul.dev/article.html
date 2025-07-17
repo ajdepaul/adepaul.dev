@@ -41,381 +41,131 @@
                      loading="lazy" class="fill-width">
 
                 <p>
-                    Welcome to <a href="https://adepaul.dev">adepaul.dev</a>, my portfolio website containing detailed
-                    write-ups of my projects, along with my educational background and contact information.
-                </p>
-
-                <p>
+                    Welcome to <a href="https://adepaul.dev">adepaul.dev</a>, my portfolio website, which contains
+                    additional details about my projects, as well as my educational background and contact information.
                     The site is built using <a href="https://spring.io/projects/spring-boot">Spring Boot</a>, a popular
                     Java framework primarily used for building web applications. As this website was my introduction to
-                    the web development world, I thought choosing a popular framework was a good choice. Throughout my
-                    experience of building the site, I have overcome multiple challenges that I thought were worth
-                    sharing.
-                </p>
-
-                <p>
-                    If you are interested in website projects that are more modern, check out my other write-ups:
+                    the web development world, you may be more interested in some of my other projects that use more
+                    modern frameworks:
                 </p>
 
                 <ul>
                     <li><a href="/projects/poetry-site">Poetry Site</a> (Next.js)</li>
-                    <li><a href="/projects/anthonydepaulmasonryinc.com">anthonydepaulmasonryinc.com</a> (Next.js)</li>
                     <li><a href="/projects/SDPS">SDPS</a> (Tauri/Vite.js)</li>
+                    <li><a href="/projects/anthonydepaulmasonryinc.com">anthonydepaulmasonryinc.com</a> (Next.js)</li>
                 </ul>
 
-                <h2 id="article-structure">Write-Up Structure</h2>
+                <h2 id="project-setup">Project Setup</h2>
 
                 <p>
-                    The project write-ups are structured in a way that each project contains its own unique consistently
-                    structured metadata that makes altering common fragments across all project articles simple and
-                    easy. To accomplish this, the website's resource directory stores JSON files containing details
-                    about each project along with a Thymeleaf fragment containing the written content of each project
-                    article. <a href="https://www.thymeleaf.org/">Thymeleaf</a> is a template engine commonly used with
-                    Spring that allows structured parts of HTML to be joined to make dynamic layouts. The Thymeleaf
-                    article structure consists of:
+                    Here's an overview of how the website is structured:
                 </p>
 
                 <ul>
-                    <li>a fragment for the page header</li>
-                    <li>a fragment for the article content</li>
-                    <li>a fragment for the page footer</li>
-                    <li>an article template to combine everything</li>
+                    <li>
+                        <a href="https://spring.io/projects/spring-boot"><b>Spring Boot</b></a>
+                        <ul>
+                            <li>
+                                The website consists of five controllers for the following routes: <code>/</code>,
+                                <code class="nowrap">/contact</code>, <code class="nowrap">/legal</code>,
+                                <code class="nowrap">/projects</code>, <code class="nowrap">/projects/{project}</code>,
+                                and an additional controller for handling errors. The home and projects controllers
+                                retrieve additional data for those pages and pass that data to the model, which is
+                                handled by Thymeleaf. The data the controllers receive is stored as JSON within the
+                                <code>resources</code> directory. For example, the home controller retrieves the list of
+                                featured projects from
+                                <a href="https://github.com/ajdepaul/adepaul.dev/blob/master/src/main/resources/templates/projects/featured.json"><code>featured.json</code></a>
+                                and passes that list to the model for rendering.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="https://www.thymeleaf.org/"><b>Thymeleaf</b></a>
+                        <ul>
+                            <li>
+                                Thymeleaf is a template engine commonly used with Spring that allows structured parts of
+                                HTML to be joined to make dynamic layouts. Thymeleaf fragments are used for common
+                                components and styles that get reused around the site. For example, the navbar, the
+                                footer, and these project write-ups are all fragments that are inserted into a larger
+                                template that defines the page. Additionally, the Thymeleaf templates receive data from
+                                the Spring controllers, which is then displayed on the page.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <b>Hosting</b>
+                        <ul>
+                            <li>
+                                The website is hosted on a cheap <a href="https://www.hetzner.com/">Hetzner</a> shared
+                                vCPU server located in Ashburn, Virginia. The server may not be very powerful with only
+                                2 virtual CPUs, 2 GB of RAM, and 40 GB of storage, but it is more than enough for the
+                                occasional traffic the site can realistically expect.
+                            </li>
+                            <li>
+                                A <a href="https://github.com/features/actions">GitHub Actions</a> workflow is used to
+                                push a compiled <a href="https://www.docker.com/">Docker</a> image to the
+                                <a href="https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry">GitHub Container Registry (GHCR)</a>.
+                                The
+                                <a href="https://github.com/ajdepaul/adepaul.dev/blob/master/.github/workflows/gradle-publish.yml"><code>gradle-publish.yml</code></a>
+                                workflow file is configured to set up a build environment that compiles the website,
+                                builds a Docker image, and then pushes that Docker image to GHCR every time an update is
+                                pushed to the master branch. Additionally, the action updates the
+                                <a href="https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/about-the-dependency-graph">GitHub dependency graph</a>
+                                that is used to monitor the project's dependencies for any vulnerability issues that may
+                                appear. When a dependency vulnerability is found, the
+                                <a href="https://docs.github.com/en/code-security/dependabot/dependabot-alerts/about-dependabot-alerts">GitHub Dependabot</a>
+                                sends an email alert.
+                            </li>
+                            <li>
+                                On the Hetzner server itself, the site is run using
+                                <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/">Cloudflare Tunnels</a>
+                                and
+                                <a href="https://containrrr.dev/watchtower/">Watchtower</a>,
+                                which are configured through
+                                <a href="https://docs.docker.com/compose/">Docker Compose</a>. Cloudflare Tunnels
+                                provide an easy way of serving content to the internet without opening a port on your
+                                server for everyone to see. Instead, the
+                                <a href="https://hub.docker.com/r/cloudflare/cloudflared">cloudflared Docker image</a>
+                                is connected to the same network as the website Docker container and routes all inbound
+                                and outbound traffic to and from the website Docker container. When connecting to
+                                <a href="https://adepaul.dev/">adepaul.dev</a> from the public internet, the request is
+                                sent to Cloudflare's public CMS servers, which then send a request to the website
+                                through the cloudflared container. By using Cloudflare's servers, the website server is
+                                better secured from the open internet and can additionally utilize the benefits of using
+                                Cloudflare, such as easy HTTPS setup and caching. Because the site primarily serves
+                                static content, Cloudflare's caching rules have been configured to be as aggressive as
+                                possible to further reduce unnecessary traffic to the main server.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <b>Design</b>
+                        <ul>
+                            <li>
+                                The site's design is primarily focused on being clean, easy to read and navigate, and
+                                responsive for all screen sizes. The styling was partially inspired by early '90s user
+                                interface design, such that each project section is contained within a simplistic window
+                                with a monospaced font. Originally, the site had an intro "boot sequence" animation upon
+                                initially visiting. The animation sequence of a splash screen followed by fake boot
+                                console output was inspired by an old
+                                <a href="https://www.raspberrypi.com/">Raspberry Pi</a> I had that had a similar boot
+                                animation sequence. The intro animation can still be viewed
+                                <a href="/intro.html">here</a>. The pixel filter effect was achieved by overlaying
+                                <a href="/img/background-pixel.png">this 3×3 pixel image</a> with the CSS
+                                <code>darken</code> <code>mix-blend-mode</code> to effectively reduce the display
+                                resolution by a factor of nine, and was inspired by this
+                                <a href="https://fauux.neocities.org/">Serial Experiments Lain fan site</a>
+                                (warning: audio played immediately and has a flashing background).
+                            </li>
+                            <li>
+                                I have always liked tag systems for sorting large sets of items, and that was the
+                                inspiration for the <a href="/projects">projects page</a> search filter functionality.
+                                The page provides several filter settings that allow users to easily filter the list of
+                                displayed projects that contain or exclude the tags according to the buttons selected.
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
-
-<!--                <p>-->
-<!--                    Common article styling is kept in its own CSS file that makes modifying styles across all projects-->
-<!--                    easy. For example, the styling used for the following code block is as follows:-->
-<!--                </p>-->
-
-<!--                <pre class="medium"><code>-->
-<!--                    #article .project-content p code {-->
-<!--                        padding: 0 5px;-->
-<!--                        border-radius: 5px;-->
-<!--                        background-color: var(&#45;&#45;transp-black);-->
-<!--                    }-->
-
-<!--                    #article .project-content pre {-->
-<!--                        width: 100%;-->
-<!--                        padding: 10px;-->
-<!--                        background-color: var(&#45;&#45;gray-3);-->
-<!--                        color: var(&#45;&#45;light-gray);-->
-<!--                        border: 3px solid var(&#45;&#45;black);-->
-<!--                        box-shadow: 10px 10px 0 0 var(&#45;&#45;transp-black);-->
-<!--                        border-radius: 5px;-->
-<!--                        overflow: auto;-->
-<!--                    }-->
-
-<!--                    #article .project-content pre.medium {-->
-<!--                        max-height: calc(1rem * 1.5 * 16);-->
-<!--                    }-->
-<!--                </code></pre>-->
-
-                <p>
-                    Each project write-up has a corresponding <code>details.json</code> resource file used to store
-                    metadata about the project. This metadata is used to fill out relevant sections of the article such
-                    as the project title, a repository link, and thumbnail image path. The technologies and languages
-                    used in the project for easily navigating the articles are also defined here. The
-                    <code>details.json</code> file for this write-up looks like:
-                </p>
-
-                <a href="https://github.com/ajdepaul/adepaul.dev/blob/master/src/main/resources/templates/projects/adepaul.dev/details.json" class="pre-src">
-                    src/main/resources/templates/projects/adepaul.dev/details.json
-                </a>
-                <pre class="medium"><code>
-                    {
-                      "isPublished": true,
-                      "articleLink": "projects/adepaul.dev",
-                      "title": "adepaul.dev",
-                      "repositoryLink": "https://github.com/ajdepaul/adepaul.dev",
-                      "imgSrc": "/img/portfolio-website/animated-thumbnail.gif",
-                      "imgAlt": "Website intro animation screenshot",
-                      "publicationDate": "2023-04-10",
-                      "publicationDateHideDay": false,
-                      "completionDate": "2023-01-19",
-                      "completionDateHideDay": false,
-                      "technologies": [
-                        "Linux",
-                        "Docker",
-                        "Photoshop/Affinity Photo",
-                        "Gradle",
-                        "GitHub Actions",
-                        "Spring Boot"
-                      ],
-                      "languages": [
-                        "Java",
-                        "HTML",
-                        "JavaScript",
-                        "CSS"
-                      ],
-                      "summary": "adepaul.dev is my personal showcase website containing detailed write-ups of projects, along with educational background and contact information."
-                    }
-                </code></pre>
-
-                <h2 id="browsing-articles">Browsing Write-Ups</h2>
-
-                <p>
-                    The <a href="/projects">projects page</a> uses a filter tool to make navigating the available
-                    articles easier. By clicking on one of the listed technology or language buttons, that button
-                    changes mode to either "ignore" (gray), "require" (blue), or "exclude" (red). When a button's state
-                    changes, the article list updates by filtering the available projects that satisfy the selected
-                    required and excluded technologies and languages. Additionally, a search field is provided that
-                    filters the list of articles to only list the projects containing the search text.
-                </p>
-
-                <p>
-                    The "projects" Spring controller is configured to load the projects' technology and language lists
-                    from their corresponding JSON files. That data is then passed to the "projects" model for the
-                    Thymeleaf template to handle.
-                </p>
-
-                <a href="https://github.com/ajdepaul/adepaul.dev/blob/master/src/main/java/dev/adepaul/website/controller/ProjectsController.java" class="pre-src">
-                    src/main/java/dev/adepaul/website/controller/ProjectsController.java
-                </a>
-                <pre class="medium"><code>
-                    @GetMapping
-                    public String projects(Model model) throws IOException {
-                        final var projects = projectsService.getAllProjectDetails().stream()
-                                .sorted((p1, p2) -> p2.getPublicationDate().compareTo(p1.getPublicationDate())) // reversed order
-                                .toList();
-
-                        model.addAttribute("projects", projects);
-
-                        final var technologies = new HashSet&lt;String&gt;();
-                        projects.forEach(proj -> technologies.addAll(proj.getTechnologies()));
-                        model.addAttribute("technologies", technologies.stream().sorted().toList());
-
-                        final var languages = new HashSet&lt;String&gt;();
-                        projects.forEach(proj -> languages.addAll(proj.getLanguages()));
-                        model.addAttribute("languages", languages.stream().sorted().toList());
-
-                        return "projects";
-                    }
-                </code></pre>
-
-                <p>
-                    The "projects" Thymeleaf template creates a project element for each project using the data that was
-                    passed to the model. The technology and language list is provided as a data attribute for each
-                    project element.
-                </p>
-
-                <a href="https://github.com/ajdepaul/adepaul.dev/blob/master/src/main/resources/templates/projects.html" class="pre-src">
-                    src/main/resources/templates/projects.html
-                </a>
-                <pre class="medium"><code>
-                    &lt;div id="projects" class="section"&gt;
-                        &lt;div class="content"&gt;
-                            &lt;div class="project-container" th:each="project: ${projects}" th:data-technologies="${project.technologiesStr}" th:data-languages="${project.languagesStr}"&gt;
-                                &lt;div class="project"&gt;
-                                    &lt;h4 class="project-title" th:text="${project.title}" /&gt;
-                                    &lt;div class="project-content"&gt;
-                                        &lt;div class="columns"&gt;
-                                            &lt;div class="proj-img col"&gt;
-                                                &lt;img th:src="${project.imgSrc}" th:alt="${project.imgAlt}" loading="lazy"&gt;
-                                            &lt;/div&gt;
-                                            &lt;div class="proj-text col"&gt;
-                                                &lt;div class="publication-date" th:text="'Article Published: ' + ${project.publicationDateStr}"/&gt;
-                                                &lt;div class="completion-date" th:text="'Project Completed: ' + ${project.completionDateStr}" /&gt;
-                                                &lt;p th:text="${project.summary}" /&gt;
-                                                &lt;a th:href="${project.articleLink}" class="btn"&gt;More&lt;/a&gt;
-                                            &lt;/div&gt;
-                                        &lt;/div&gt;
-                                    &lt;/div&gt;
-                                &lt;/div&gt;
-                            &lt;/div&gt;
-                        &lt;/div&gt;
-                    &lt;/div&gt;
-                </code></pre>
-
-                <p>
-                    Then, the sorting takes place on client-side JavaScript. First, the data for each project is loaded:
-                </p>
-
-                <a href="https://github.com/ajdepaul/adepaul.dev/blob/master/src/main/resources/static/script/projects.js" class="pre-src">
-                    src/main/resources/static/script/projects.js
-                </a>
-                <pre class="medium"><code>
-                    const projects = Array.from(document.querySelectorAll('#projects .project-container'))
-                        .map(elem => {
-                            return {
-                                "title": elem.querySelector('h4').innerText,
-                                "technologies": elem.dataset.technologies.split(','),
-                                "languages": elem.dataset.languages.split(','),
-                                "elem": elem
-                            }
-                        })
-                </code></pre>
-
-                <p>
-                    Finally, whenever the inputs are updated, the projects are filtered according to the provided inputs.
-                </p>
-
-                <a href="https://github.com/ajdepaul/adepaul.dev/blob/master/src/main/resources/static/script/projects.js" class="pre-src">
-                    src/main/resources/static/script/projects.js
-                </a>
-                <pre class="medium"><code>
-                    function filterProjects() {
-
-                        projects.forEach(proj => {
-
-                            proj.elem.classList.remove('disabled')
-
-                            // technologies filter
-                            technologyButtons.forEach(button => {
-                                const buttonText = button.innerText
-                                if (button.classList.contains('require') && !proj.technologies.includes(buttonText)) {
-                                    proj.elem.classList.add('disabled')
-                                } else if (button.classList.contains('exclude') && proj.technologies.includes(buttonText)) {
-                                    proj.elem.classList.add('disabled')
-                                }
-                            })
-
-                            // languages filter
-                            languageButtons.forEach(button => {
-                                const buttonText = button.innerText
-                                if (button.classList.contains('require') && !proj.languages.includes(buttonText)) {
-                                    proj.elem.classList.add('disabled')
-                                } else if (button.classList.contains('exclude') && proj.languages.includes(buttonText)) {
-                                    proj.elem.classList.add('disabled')
-                                }
-                            })
-
-                            // search filter
-                            if (!proj.title.toLowerCase().includes(searchInput.value.toLowerCase())) {
-                                proj.elem.classList.add('disabled')
-                            }
-                        })
-                    }
-                </code></pre>
-
-                <h2 id="hosting">Hosting</h2>
-
-                <p>
-                    The full hosting and continuous deployment solution consists of:
-                </p>
-
-                <ol>
-                    <li>GitHub Action pushes Docker image to Docker Hub</li>
-                    <li>Watchtower Docker instance updates website container when Docker Hub receives an update</li>
-                    <li>Cloudflare Tunnel serves website from Cloudflare's CDN servers</li>
-                </ol>
-
-                <h3 id="hardware">Hardware</h3>
-
-                <p>
-                    The server hardware uses a
-                    <a href="https://www.parkytowers.me.uk/thin/wyse/d/d10d/">Dell Wyse 5010 Thin Client</a>. Originally
-                    meant to be used as inexpensive virtual desktop systems for office settings, these little computers
-                    are great for hosting lightweight servers from home.
-                </p>
-
-                <p>
-                    To prepare the mini computer for hosting servers, a few modifications to the device had to be made.
-                    The Dell Thin Client come with only a couple gigabytes of flash storage as they are not designed to
-                    be self-sufficient personal computers. As these devices do not come with any SATA expansion ports,
-                    a cheap spare 120GB 2.5" SSD was plugged into a rear USB port with an adapter cable. With the
-                    additional storage installed, a lightweight Ubuntu Server distribution was installed which can be
-                    accessed remotely through SSH.
-                </p>
-
-                <h3 id="github-actions">GitHub Actions</h3>
-
-                <p>
-                    <a href="https://github.com/features/actions">GitHub Actions</a> is a CI/CD feature offered by
-                    GitHub that allows automated workflows to be executed on GitHub-hosted or self-hosted runners.
-                    Automated workflows are defined in YAML files within GitHub repositories' <code>.github</code>
-                    directory.
-                </p>
-
-                <p>
-                    In this case, on every master branch commit,
-                    <a href="https://github.com/ajdepaul/adepaul.dev/blob/master/.github/workflows/ci.yml">
-                        a workflow to update the website</a> is run. The configuration file specifies the following
-                    steps take place:
-                </p>
-
-                <ol>
-                    <li>Begin with an Ubuntu image</li>
-                    <li>Checkout the master branch latest commit</li>
-                    <li>Install the JDK dependency</li>
-                    <li>Build the project using <a href="https://gradle.org/">Gradle</a></li>
-                    <li>Build the compiled app into a Docker image using the repository's <code>Dockerfile</code></li>
-                    <li>Login to Docker Hub</li>
-                    <li>Push the Docker image to Docker Hub</li>
-                </ol>
-
-                <h3 id="docker">Docker</h3>
-
-                <p>
-                    <a href="https://www.docker.com/">Docker</a> is software platform that allows applications to run in
-                    lightweight isolated containers. Containers can only access what is inside them so each container
-                    needs to be configured with the dependencies required for its application. For this project, the
-                    configuration is simple and only requires Alpine, a lightweight version of Linux, with Java
-                    installed.
-                </p>
-
-                <p>
-                    The Dell Wyse 5010 Thin Client runs an installation of Docker and runs the website application at
-                    all times. While containers have restricted access to only what is inside the container, they can be
-                    configured to have open ports to communicate through. In this case, the container exposes port 8080
-                    so that the website can be accessed.
-                </p>
-
-                <p>
-                    To keep the running Docker container up-to-date with the latest Docker Hub image,
-                    a separate Docker container <a href="https://containrrr.dev/watchtower/">Watchtower</a> checks the
-                    Docker Hub image once every hour for updates. Once a new image is found for the website, it restarts
-                    the website container with the new image.
-                </p>
-
-                <h3 id="cloudflare-tunnel">Cloudflare Tunnel</h3>
-
-                <p>
-                    While the server is hosted from a Docker container, it is accessible publicly through a free
-                    <a href="https://www.cloudflare.com/products/tunnel/">Cloudflare Tunnel</a>. Instead of opening a
-                    port on the network, Cloudflare tunnels run a daemon on the server that connects to a server on the
-                    machine and a Cloudflare server. Whenever someone tries to access the website, they connect to
-                    Cloudflare's servers. Cloudflare's servers then connects to the machine through the tunnel to
-                    determine what content needs to be served. This is the configuration file used to connect the
-                    Cloudflare tunnel to the locally hosted server.
-                </p>
-
-                <pre class="medium"><code>
-                    tunnel: &lt;TUNNEL ID&gt;
-                    credentials-file: &lt;CREDENTIALS FILE&gt;
-
-                    ingress:
-                      - hostname: adepaul.dev
-                        service: http://localhost:8080
-                      - hostname: www.adepaul.dev
-                        service: http://localhost:8080
-
-                      # other services
-
-                      - service: http_status:404
-                </code></pre>
-
-                <p>
-                    These tunnels not only are convenient to set up and add additional layer of security, but they also
-                    can improve website performance. Tunnel's can be configured to cache content on Cloudflare's
-                    servers. Instead of directing all traffic to the origin server, the slow Dell Thin Client, caching
-                    content on Cloudflare's servers improves loading times and creates less work for the origin server.
-                </p>
-
-                <p>
-                    Aggressive caching is not always the best method for every scenario. For websites serving content
-                    that changes frequently, such as social media websites, content cannot be cached as the content
-                    retrieved for each visit usually changes. In this case, because the website primarily hosts static
-                    content, the tunnel is configured to aggressively cache all content to maximize its benefits. The
-                    downside that comes with this configuration is that, when updating the content, either the cache has
-                    to be purged manually or it may take some time for the cached content to expire.
-                </p>
-
-                <h2 id="design">Design</h2>
-
-                <p>
-                    Site Boot Up Animation
-                    The animation was made entirely in CSS and JavaScript.
-                </p>
             </div>
         </div>
     </div>

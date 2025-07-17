@@ -15,7 +15,7 @@ for (i = 0; i < lineHeightProperty.length; i++) {
 const lineHeightUnit = lineHeightProperty.substring(i, lineHeightProperty.length)
 
 document.addEventListener('keyup', e => {
-    if (e.code === 'Escape') window.location.href = "/projects/adepaul.dev#design"
+    if (e.code === 'Escape') window.location.href = "/projects/adepaul.dev"
 })
 
 /* --------------------------- animation sequence --------------------------- */
@@ -127,4 +127,4 @@ setTimeout(() => {
 }, time)
 time += 500
 
-setTimeout(() => { window.location.href = "/projects/adepaul.dev#design" }, time)
+setTimeout(() => { window.location.href = "/projects/adepaul.dev" }, time)
