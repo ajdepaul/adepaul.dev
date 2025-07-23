@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/v4-shims.min.css" integrity="sha512-juNw36A2S+8vPLyCQCBmfxRf1+gFYy07BozcavXe9adyITkvA9LuVCbkZI9kp59tjUrn/S7zeDFN1Brz1JqJnA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/style/common.css">
+    <link rel="stylesheet" href="/style/project.css">
+    <title>adepaul.dev - Example Project</title>
+</head>
+<body>
+    <header th:replace="fragments :: header" />
+
+    <div id="title" class="section">
+        <div class="content">
+            <h1>Example Project</h1>
+        </div>
+    </div>
+
+    <div id="details" class="section">
+        <div class="content">
+            <div>
+                <div id="author">Anthony DePaul</div>
+                <a href="https://github.com/"><i class="fa-brands fa-github"></i> Project Repository</a>
+            </div>
+            <div>
+                <div id="publication-date">Article Published: Jan. 1, 9999</div>
+                <div id="completion-date">Project Completed: Jan. 1, 9999</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="article" class="section">
+        <div class="content project">
+            <h4 class="project-title">Example Project</h4>
+            <div class="project-content" th:fragment="project-content">
+
+                <img src="/img/portfolio-website/animated-thumbnail.gif" alt="Website intro animation screenshot"
+                     loading="lazy" class="fill-width">
+
+                <p>
+                    Welcome to <a href="https://adepaul.dev">adepaul.dev</a>, my portfolio website, which contains
+                    additional details about my projects, as well as my educational background and contact information.
+                    The site is built using <a href="https://spring.io/projects/spring-boot">Spring Boot</a>, a popular
+                    Java framework primarily used for building web applications. As this website was my introduction to
+                    the web development world, you may be more interested in some of my other projects that use more
+                    modern frameworks:
+                </p>
+
+                <ul>
+                    <li><a href="/projects/SDPS">SDPS</a> (Tauri/Vite.js)</li>
+                    <li><a href="/projects/poetry-site">Poetry Site</a> (Next.js)</li>
+                    <li><a href="/projects/anthonydepaulmasonryinc.com">anthonydepaulmasonryinc.com</a> (Next.js)</li>
+                </ul>
+
+                <h2 id="project-setup">Project Setup</h2>
+
+                <p>
+                    Here's an overview of how the website is structured:
+                </p>
+
+                <ul>
+                    <li>
+                        <a href="https://spring.io/projects/spring-boot"><b>Spring Boot</b></a>
+                        <ul>
+                            <li>
+                                The website consists of five controllers for the following routes: <code>/</code>,
+                                <code class="nowrap">/contact</code>, <code class="nowrap">/legal</code>,
+                                <code class="nowrap">/projects</code>, <code class="nowrap">/projects/{project}</code>,
+                                and an additional controller for handling errors. The home and projects controllers
+                                retrieve additional data for those pages and pass that data to the model, which is
+                                handled by Thymeleaf. The data the controllers receive is stored as JSON within the
+                                <code>resources</code> directory. For example, the home controller retrieves the list of
+                                featured projects from
+                                <a href="https://github.com/ajdepaul/adepaul.dev/blob/master/src/main/resources/templates/projects/featured.json"><code>featured.json</code></a>
+                                and passes that list to the model for rendering.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="https://www.thymeleaf.org/"><b>Thymeleaf</b></a>
+                        <ul>
+                            <li>
+                                Thymeleaf is a template engine commonly used with Spring that allows structured parts of
+                                HTML to be joined to make dynamic layouts. Thymeleaf fragments are used for common
+                                components and styles that get reused around the site. For example, the navbar, the
+                                footer, and these project write-ups are all fragments that are inserted into a larger
+                                template that defines the page. Additionally, the Thymeleaf templates receive data from
+                                the Spring controllers, which is then displayed on the page.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <b>Hosting</b>
+                        <ul>
+                            <li>
+                                The website is hosted on a cheap <a href="https://www.hetzner.com/">Hetzner</a> shared
+                                vCPU server located in Ashburn, Virginia. The server may not be very powerful with only
+                                2 virtual CPUs, 2 GB of RAM, and 40 GB of storage, but it is more than enough for the
+                                occasional traffic the site can realistically expect.
+                            </li>
+                            <li>
+                                A <a href="https://github.com/features/actions">GitHub Actions</a> workflow is used to
+                                push a compiled <a href="https://www.docker.com/">Docker</a> image to the
+                                <a href="https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry">GitHub Container Registry (GHCR)</a>.
+                                The
+                                <a href="https://github.com/ajdepaul/adepaul.dev/blob/master/.github/workflows/gradle-publish.yml"><code>gradle-publish.yml</code></a>
+                                workflow file is configured to set up a build environment that compiles the website,
+                                builds a Docker image, and then pushes that Docker image to GHCR every time an update is
+                                pushed to the master branch. Additionally, the action updates the
+                                <a href="https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/about-the-dependency-graph">GitHub dependency graph</a>
+                                that is used to monitor the project's dependencies for any vulnerability issues that may
+                                appear. When a dependency vulnerability is found, the
+                                <a href="https://docs.github.com/en/code-security/dependabot/dependabot-alerts/about-dependabot-alerts">GitHub Dependabot</a>
+                                sends an email alert.
+                            </li>
+                            <li>
+                                On the Hetzner server itself, the site is run using
+                                <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/">Cloudflare Tunnels</a>
+                                and
+                                <a href="https://containrrr.dev/watchtower/">Watchtower</a>,
+                                which are configured through
+                                <a href="https://docs.docker.com/compose/">Docker Compose</a>. Cloudflare Tunnels
+                                provide an easy way of serving content to the internet without opening a port on your
+                                server for everyone to see. Instead, the
+                                <a href="https://hub.docker.com/r/cloudflare/cloudflared">cloudflared Docker image</a>
+                                is connected to the same network as the website Docker container and routes all inbound
+                                and outbound traffic to and from the website Docker container. When connecting to
+                                <a href="https://adepaul.dev/">adepaul.dev</a> from the public internet, the request is
+                                sent to Cloudflare's public CMS servers, which then send a request to the website
+                                through the cloudflared container. By using Cloudflare's servers, the website server is
+                                better secured from the open internet and can additionally utilize the benefits of using
+                                Cloudflare, such as easy HTTPS setup and caching. Because the site primarily serves
+                                static content, Cloudflare's caching rules have been configured to be as aggressive as
+                                possible to further reduce unnecessary traffic to the main server.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <b>Design</b>
+                        <ul>
+                            <li>
+                                The site's design is primarily focused on being clean, easy to read and navigate, and
+                                responsive for all screen sizes. The styling was partially inspired by early '90s user
+                                interface design, such that each project section is contained within a simplistic window
+                                with a monospaced font. Originally, the site had an intro "boot sequence" animation upon
+                                initially visiting. The animation sequence of a splash screen followed by fake boot
+                                console output was inspired by an old
+                                <a href="https://www.raspberrypi.com/">Raspberry Pi</a> I had that had a similar boot
+                                animation sequence. The intro animation can still be viewed
+                                <a href="/intro.html">here</a>. The pixel filter effect was achieved by overlaying
+                                <a href="/img/background-pixel.png">this 3×3 pixel image</a> with the CSS
+                                <code>darken</code> <code>mix-blend-mode</code> to effectively reduce the display
+                                resolution by a factor of nine, and was inspired by this
+                                <a href="https://fauux.neocities.org/">Serial Experiments Lain fan site</a>
+                                (warning: audio played immediately and has a flashing background).
+                            </li>
+                            <li>
+                                I have always liked tag systems for sorting large sets of items, and that was the
+                                inspiration for the <a href="/projects">projects page</a> search filter functionality.
+                                The page provides several filter settings that allow users to easily filter the list of
+                                displayed projects that contain or exclude the tags according to the buttons selected.
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer th:replace="fragments :: footer" />
+
+    <script src="/script/common.js"></script>
+</body>
+</html>

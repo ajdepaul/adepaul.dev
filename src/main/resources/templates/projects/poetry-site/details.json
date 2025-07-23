@@ -1,0 +1,28 @@
+{
+  "isPublished": false,
+  "articleLink": "projects/poetry-site",
+  "title": "Poetry Site",
+  "repositoryLink": "https://github.com/ajdepaul/poetry-site",
+  "imgSrc": "... TODO ...",
+  "imgAlt": "... TODO ...",
+  "publicationDate": "2023-04-10",
+  "publicationDateHideDay": false,
+  "completionDate": "2023-01-19",
+  "completionDateHideDay": false,
+  "technologies": [
+    "Linux",
+    "Docker",
+    "Photoshop/Affinity Photo",
+    "GitHub Actions",
+    "Node.js",
+    "React",
+    "Next.js",
+    "Prisma",
+    "PostgreSQL",
+    "Tailwind CSS"
+  ],
+  "languages": [
+    "TypeScript"
+  ],
+  "summary": "... TODO ..."
+}

@@ -1,20 +1,26 @@
 {
-  "isPublished": false,
+  "isPublished": true,
   "articleLink": "projects/sdps",
   "title": "SDPS",
-  "repositoryLink": "https://github.com/ajdepaul/adepaul.dev",
-  "imgSrc": "/img/sdps/thumbnail.png",
+  "repositoryLink": "https://github.com/antD97/SDPS",
+  "imgSrc": "/img/sdps/screenshot-v2.png",
   "imgAlt": "Website intro animation screenshot",
-  "publicationDate": "2023-04-10",
+  "publicationDate": "2025-07-23",
   "publicationDateHideDay": false,
-  "completionDate": "2023-01-19",
+  "completionDate": "2021-02-23",
   "completionDateHideDay": false,
   "technologies": [
     "Gradle",
-    "Swing/AWT"
+    "Swing/AWT",
+    "Node.js",
+    "React",
+    "Tauri",
+    "Vite"
   ],
   "languages": [
-    "Kotlin"
+    "Kotlin",
+    "Rust",
+    "TypeScript"
   ],
   "summary": "SDPS is a tool to track and compare combat data in the video game Smite."
 }

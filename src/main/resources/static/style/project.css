@@ -226,7 +226,7 @@ body {
     content: "- ";
 }
 
-#article .project-content ul > li:not(:first-child) {
+#article .project-content ul > li {
     margin-top: 10px;
 }
 

@@ -37,15 +37,117 @@
             <h4 class="project-title">Example Project</h4>
             <div class="project-content" th:fragment="project-content">
 
-                <img src="/img/sdps/screenshot.png" alt="SDPS tool screenshot"
+                <img src="/img/sdps/screenshot-v2-gameplay.png" alt="SDPS v2 screenshot"
                      loading="lazy" class="fill-width">
 
                 <p>
-                    Welcome to <a href="/">adepaul.dev</a>, my personal portfolio website, containing
-                    detailed write-ups of my various projects and any other relevant information about myself.
+                    <a href="https://www.smitegame.com/home/">Smite</a> is a MOBA (Multiplayer Online Battle Arena)
+                    video game similar to <a href="https://www.leagueoflegends.com/en-us/">League of Legends</a> or
+                    <a href="https://www.dota2.com/home">Dota 2</a>. In Smite, players buy items that affect different
+                    aspects of the characters they play as, such as damage, healing, etc. SDPS is a tool for the PC
+                    version of Smite that reads the game's combat log and presents it in a table, making it easier to
+                    compare different items, combos, and game mechanics. The tool's latest version (v2.4) was downloaded
+                    a total of 257 times.
                 </p>
-                <p>
 
+                <p>
+                    All versions of SDPS utilize the <code>/combatlog toggle</code> command, which continuously prints
+                    the current match's combat log to a file. The combat log records the history of any damage dealt,
+                    healing, and other events involving the player. By monitoring this file, real-time statistics can be
+                    displayed to the user as an overlay.
+                </p>
+
+                <h2 id="version-1">Version 1</h2>
+
+                <img src="/img/sdps/screenshot-v1.png" alt="SDPS v1 screenshot"
+                     loading="lazy" class="extra-large">
+
+                <p>
+                    Version 1 of SDPS was a tool I made to compare item builds for "hunter" type characters. As hunters
+                    in Smite generally care most about continuous DPS (damage per second), I wanted a way to easily
+                    compare DPS between various item choices. This version of the tool is a simple command-line tool
+                    written in Kotlin, as it was for my personal use.
+                </p>
+
+                <h2 id="version-2">Version 2</h2>
+
+                <img src="/img/sdps/screenshot-v2.png" alt="SDPS v2 screenshot"
+                     loading="lazy" class="large">
+
+                <p>
+                    In version 2 of SDPS, I decided to make the tool more user-friendly and release it to the public. To
+                    do so, I used Java's Swing libraries to make a table UI that could be displayed on top of the game
+                    window. With this new major version came a few improvements, some of which were requested directly
+                    by users:
+                </p>
+
+                <ul>
+                    <li>Ability to track the total damage of a multiple-hit combo</li>
+                    <li>Automatic in-game name detection</li>
+                    <li>Table text size resizability</li>
+                    <li>GitHub release update checker</li>
+                </ul>
+
+                <h2 id="version-3">Version 3</h2>
+
+                <img src="/img/sdps/screenshot-v3.png" alt="SDPS v3 screenshot"
+                     loading="lazy" class="fill-width">
+
+                <p>
+                    Version 2 had a few flaws that could not realistically be improved while using Java's outdated Swing
+                    libraries. Version 3 is a work in progress built using the <a href="https://tauri.app/">Tauri</a>
+                    framework and is a major improvement over version 2. Tauri uses the operating system's native web
+                    renderer (WebView on Windows), any web frontend framework for the application's UI, and an
+                    additional <a href="https://www.rust-lang.org/">Rust</a> backend layer that communicates with the
+                    frontend portion of the application. In SDPS v3's case, the tool uses a
+                    <a href="https://vite.dev/">Vite</a> frontend layer while the Rust backend monitors the game's
+                    combat log files. I chose to use Tauri with Vite because both platforms have a strong focus on being
+                    lightweight, and I didn't want something as big as
+                    <a href="https://www.electronjs.org/">Electron</a> for a simple game overlay program.
+                </p>
+
+<!--                <p>-->
+<!--                    sdps v3 better click through overlay making it usable in matches as opposed to jungle practice only-->
+<!--                </p>-->
+
+                <img src="/img/sdps/screenshot-v3-overlay.png" alt="SDPS v3 screenshot"
+                     loading="lazy" class="large">
+
+                <img src="/img/sdps/screenshot-v3-window.png" alt="SDPS v3 screenshot"
+                     loading="lazy" class="extra-large">
+
+                <p>
+                    Here's an overview of what's new in version 3 and what is still to come:
+                </p>
+
+                <ul>
+                    <li>
+                        Done
+                        <ul>
+                            <li>Modernized application design</li>
+                            <li>Multiple overlay support</li>
+                            <li>Custom overlay styling using CSS</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Planned
+                        <ul>
+                            <li>Total and per-second columns for damage and healing in the combat table overlay</li>
+                            <li>Overlay preset saving</li>
+                            <li>Key binds</li>
+                            <li>More match statistic insights</li>
+                            <li>Additional fun overlays (eg, combo counter)</li>
+                            <li>Combat log syncing with other players in the same match for additional statistics</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <p>
+                    As Hi-Rez Studios is no longer updating Smite and is currently focusing on
+                    <a href="https://www.smite2.com/">Smite 2</a>, the player base of the original Smite is fading out.
+                    At the time of writing, Smite 2 does not support the same feature of outputting the game's combat
+                    log to a file like its predecessor. I intend to publicly ask the developers to implement an
+                    equivalent feature when I release SDPS v3.
                 </p>
             </div>
         </div>
