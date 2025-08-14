@@ -51,8 +51,8 @@
 
                 <ul>
                     <li><a href="/projects/sdps">SDPS</a> (Tauri/Vite)</li>
-                    <li><a href="/projects/poetry-site">Poetry Site</a> (Next)</li>
-                    <li><a href="/projects/anthonydepaulmasonryinc.com">anthonydepaulmasonryinc.com</a> (Next)</li>
+                    <li><a href="/projects/poetry-site">Poetry Site</a> (Next.js)</li>
+                    <li><a href="/projects/anthonydepaulmasonryinc.com">anthonydepaulmasonryinc.com</a> (Next.js)</li>
                 </ul>
 
                 <h2 id="project-setup">Project Setup</h2>
@@ -63,7 +63,7 @@
 
                 <ul>
                     <li>
-                        <a href="https://spring.io/projects/spring-boot"><b>Spring Boot</b></a>
+                        <b>Spring Boot</b>
                         <ul>
                             <li>
                                 The website consists of five controllers for the following routes: <code>/</code>,
@@ -80,15 +80,16 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="https://www.thymeleaf.org/"><b>Thymeleaf</b></a>
+                        <b>Thymeleaf</b>
                         <ul>
                             <li>
-                                Thymeleaf is a template engine commonly used with Spring that allows structured parts of
-                                HTML to be joined to make dynamic layouts. Thymeleaf fragments are used for common
-                                components and styles that get reused around the site. For example, the navbar, the
-                                footer, and these project write-ups are all fragments that are inserted into a larger
-                                template that defines the page. Additionally, the Thymeleaf templates receive data from
-                                the Spring controllers, which is then displayed on the page.
+                                <a href="https://www.thymeleaf.org/">Thymeleaf</a> is a template engine commonly used
+                                with Spring that allows structured parts of HTML to be joined to make dynamic layouts.
+                                Thymeleaf fragments are used for common components and styles that get reused around the
+                                site. For example, the navbar, the footer, and these project write-ups are all fragments
+                                that are inserted into a larger template that defines the page. Additionally, the
+                                Thymeleaf templates receive data from the Spring controllers, which is then displayed on
+                                the page.
                             </li>
                         </ul>
                     </li>
@@ -96,16 +97,16 @@
                         <b>Hosting</b>
                         <ul>
                             <li>
-                                The website is hosted on a cheap <a href="https://www.hetzner.com/">Hetzner</a> shared
-                                vCPU server located in Ashburn, Virginia. The server may not be very powerful with only
-                                2 virtual CPUs, 2 GB of RAM, and 40 GB of storage, but it is more than enough for the
-                                occasional traffic the site can realistically expect.
+                                The website is hosted on a inexpensive <a href="https://www.hetzner.com/">Hetzner</a>
+                                shared vCPU server located in Ashburn, Virginia. The server may not be very powerful
+                                with only 2 virtual CPUs, 2 GB of RAM, and 40 GB of storage, but it is more than enough
+                                for the occasional traffic the site can realistically expect.
                             </li>
                             <li>
                                 A <a href="https://github.com/features/actions">GitHub Actions</a> workflow is used to
                                 push a compiled <a href="https://www.docker.com/">Docker</a> image to the
-                                <a href="https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry">GitHub Container Registry (GHCR)</a>.
-                                The
+                                <a href="https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry">GitHub Container Registry</a>
+                                (GHCR). The
                                 <a href="https://github.com/ajdepaul/adepaul.dev/blob/master/.github/workflows/gradle-publish.yml"><code>gradle-publish.yml</code></a>
                                 workflow file is configured to set up a build environment that compiles the website,
                                 builds a Docker image, and then pushes that Docker image to GHCR every time an update is
@@ -117,14 +118,13 @@
                                 sends an email alert.
                             </li>
                             <li>
-                                On the Hetzner server itself, the site is run using
+                                On the Hetzner server, the site is run using
                                 <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/">Cloudflare Tunnels</a>
                                 and
-                                <a href="https://containrrr.dev/watchtower/">Watchtower</a>,
-                                which are configured through
-                                <a href="https://docs.docker.com/compose/">Docker Compose</a>. Cloudflare Tunnels
-                                provide an easy way of serving content to the internet without opening a port on your
-                                server for everyone to see. Instead, the
+                                <a href="https://containrrr.dev/watchtower/">Watchtower</a>, which are configured
+                                through <a href="https://docs.docker.com/compose/">Docker Compose</a>. Cloudflare
+                                Tunnels provide an easy way of serving content to the internet without opening a port on
+                                your server for everyone to see. Instead, the
                                 <a href="https://hub.docker.com/r/cloudflare/cloudflared">cloudflared Docker image</a>
                                 is connected to the same network as the website Docker container and routes all inbound
                                 and outbound traffic to and from the website Docker container. When connecting to

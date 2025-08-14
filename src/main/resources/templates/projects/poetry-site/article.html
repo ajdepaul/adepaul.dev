@@ -37,23 +37,20 @@
             <h4 class="project-title">Example Project</h4>
             <div class="project-content" th:fragment="project-content">
 
-                <img src="/img/portfolio-website/animated-thumbnail.gif" alt="Website intro animation screenshot"
+                <img src="/img/poetry-site/screenshot.png" alt="Poetry website screenshot"
                      loading="lazy" class="fill-width">
 
                 <p>
-                    Welcome to <a href="https://adepaul.dev">adepaul.dev</a>, my portfolio website, which contains
-                    additional details about my projects, as well as my educational background and contact information.
-                    The site is built using <a href="https://spring.io/projects/spring-boot">Spring Boot</a>, a popular
-                    Java framework primarily used for building web applications. As this website was my introduction to
-                    the web development world, you may be more interested in some of my other projects that use more
-                    modern frameworks:
+                    I designed this website to give someone a place to share poems online anonymously. The initial
+                    design was kept simple with only a single poem displayed at a time, inspired by the
+                    <a href="https://xkcd.com/">xkcd site</a>. The artistic design mimics a personal handwritten
+                    notebook by using dot paper pages for the poems, graphite colors, and botanical doodles in the
+                    background.
                 </p>
 
-                <ul>
-                    <li><a href="/projects/SDPS">SDPS</a> (Tauri/Vite.js)</li>
-                    <li><a href="/projects/poetry-site">Poetry Site</a> (Next.js)</li>
-                    <li><a href="/projects/anthonydepaulmasonryinc.com">anthonydepaulmasonryinc.com</a> (Next.js)</li>
-                </ul>
+                <p>
+                    <a href="https://poetry-site.adepaul.dev/">Check out the demo site here.</a>
+                </p>
 
                 <h2 id="project-setup">Project Setup</h2>
 
@@ -63,32 +60,51 @@
 
                 <ul>
                     <li>
-                        <a href="https://spring.io/projects/spring-boot"><b>Spring Boot</b></a>
+                        <b>Next.js</b>
                         <ul>
                             <li>
-                                The website consists of five controllers for the following routes: <code>/</code>,
-                                <code class="nowrap">/contact</code>, <code class="nowrap">/legal</code>,
-                                <code class="nowrap">/projects</code>, <code class="nowrap">/projects/{project}</code>,
-                                and an additional controller for handling errors. The home and projects controllers
-                                retrieve additional data for those pages and pass that data to the model, which is
-                                handled by Thymeleaf. The data the controllers receive is stored as JSON within the
-                                <code>resources</code> directory. For example, the home controller retrieves the list of
-                                featured projects from
-                                <a href="https://github.com/ajdepaul/adepaul.dev/blob/master/src/main/resources/templates/projects/featured.json"><code>featured.json</code></a>
-                                and passes that list to the model for rendering.
+                                The project is built with <a href="https://nextjs.org/">Next.js</a> framework, the
+                                <a href="https://www.typescriptlang.org/">TypeScript language</a>,
+                                <a href="https://react.dev/">React</a>, and
+                                <a href="https://tailwindcss.com/">Tailwind CSS</a> for CSS styling.
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="https://www.thymeleaf.org/"><b>Thymeleaf</b></a>
+                        <b>Prisma</b>
                         <ul>
                             <li>
-                                Thymeleaf is a template engine commonly used with Spring that allows structured parts of
-                                HTML to be joined to make dynamic layouts. Thymeleaf fragments are used for common
-                                components and styles that get reused around the site. For example, the navbar, the
-                                footer, and these project write-ups are all fragments that are inserted into a larger
-                                template that defines the page. Additionally, the Thymeleaf templates receive data from
-                                the Spring controllers, which is then displayed on the page.
+                                For data storage, <a href="https://www.prisma.io/">Prisma</a> is used to manage a
+                                <a href="https://www.postgresql.org/">PostgreSQL</a> database through a
+                                <a href="https://github.com/ajdepaul/poetry-site/blob/main/prisma/schema.prisma">Prisma schema file</a>.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <b>Authentication</b>
+                        <ul>
+                            <li>
+                                Admin pages and actions are protected using
+                                <a href="https://authjs.dev/">Auth.js</a> with
+                                <a href="https://kinde.com/">Kinde</a>.
+                                <a href="https://nextjs.org/docs/14/app/building-your-application/routing/middleware">Next.js middleware</a>
+                                is used to check that the user has been authenticated through Kinde before granting
+                                access to `/admin` pages. Next.js admin
+                                <a href="https://nextjs.org/docs/13/app/api-reference/functions/server-actions">server actions</a>
+                                all first check authentication before making any changes.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <b>Markdown</b>
+                        <ul>
+                            <li>
+                                Poems support <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a> syntax using
+                                <a href="https://www.npmjs.com/package/marked">Marked</a>. The raw Markdown syntax of
+                                the poem is rendered server-side using a Marked `RendererObject`. Because Marked
+                                supports inline HTML, the Marked result is sanitized using
+                                <a href="https://www.npmjs.com/package/dompurify">DOMPurify</a> to ensure nobody can
+                                inject malicious code into poem Markdown text.
                             </li>
                         </ul>
                     </li>
@@ -96,76 +112,68 @@
                         <b>Hosting</b>
                         <ul>
                             <li>
-                                The website is hosted on a cheap <a href="https://www.hetzner.com/">Hetzner</a> shared
-                                vCPU server located in Ashburn, Virginia. The server may not be very powerful with only
-                                2 virtual CPUs, 2 GB of RAM, and 40 GB of storage, but it is more than enough for the
-                                occasional traffic the site can realistically expect.
+                                The hosting solution is very similar to what was done for this <code>adepaul.dev</code>
+                                site. The same Hetzner server that hosts <code>adepaul.dev</code> also hosts the
+                                <a href="https://poetry-site.adepaul.dev/">demo poetry site</a>, as well as the actual
+                                poetry site server.
                             </li>
                             <li>
-                                A <a href="https://github.com/features/actions">GitHub Actions</a> workflow is used to
-                                push a compiled <a href="https://www.docker.com/">Docker</a> image to the
-                                <a href="https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry">GitHub Container Registry (GHCR)</a>.
-                                The
-                                <a href="https://github.com/ajdepaul/adepaul.dev/blob/master/.github/workflows/gradle-publish.yml"><code>gradle-publish.yml</code></a>
-                                workflow file is configured to set up a build environment that compiles the website,
-                                builds a Docker image, and then pushes that Docker image to GHCR every time an update is
-                                pushed to the master branch. Additionally, the action updates the
+                                A
+                                <a href="https://github.com/features/actions">GitHub Actions</a> workflow is used to
+                                push a compiled
+                                <a href="https://www.docker.com/">Docker</a>
+                                image to the
+                                <a href="https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry">GitHub Container Registry</a>
+                                (GHCR). At the time of writing, no
                                 <a href="https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/about-the-dependency-graph">GitHub dependency graph</a>
-                                that is used to monitor the project's dependencies for any vulnerability issues that may
-                                appear. When a dependency vulnerability is found, the
-                                <a href="https://docs.github.com/en/code-security/dependabot/dependabot-alerts/about-dependabot-alerts">GitHub Dependabot</a>
-                                sends an email alert.
+                                is generated with the GitHub action.
                             </li>
                             <li>
-                                On the Hetzner server itself, the site is run using
+                                On the Hetzner server, the site is run using
                                 <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/">Cloudflare Tunnels</a>
                                 and
-                                <a href="https://containrrr.dev/watchtower/">Watchtower</a>,
-                                which are configured through
-                                <a href="https://docs.docker.com/compose/">Docker Compose</a>. Cloudflare Tunnels
-                                provide an easy way of serving content to the internet without opening a port on your
-                                server for everyone to see. Instead, the
-                                <a href="https://hub.docker.com/r/cloudflare/cloudflared">cloudflared Docker image</a>
-                                is connected to the same network as the website Docker container and routes all inbound
-                                and outbound traffic to and from the website Docker container. When connecting to
-                                <a href="https://adepaul.dev/">adepaul.dev</a> from the public internet, the request is
-                                sent to Cloudflare's public CMS servers, which then send a request to the website
-                                through the cloudflared container. By using Cloudflare's servers, the website server is
-                                better secured from the open internet and can additionally utilize the benefits of using
-                                Cloudflare, such as easy HTTPS setup and caching. Because the site primarily serves
-                                static content, Cloudflare's caching rules have been configured to be as aggressive as
-                                possible to further reduce unnecessary traffic to the main server.
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <b>Design</b>
-                        <ul>
-                            <li>
-                                The site's design is primarily focused on being clean, easy to read and navigate, and
-                                responsive for all screen sizes. The styling was partially inspired by early '90s user
-                                interface design, such that each project section is contained within a simplistic window
-                                with a monospaced font. Originally, the site had an intro "boot sequence" animation upon
-                                initially visiting. The animation sequence of a splash screen followed by fake boot
-                                console output was inspired by an old
-                                <a href="https://www.raspberrypi.com/">Raspberry Pi</a> I had that had a similar boot
-                                animation sequence. The intro animation can still be viewed
-                                <a href="/intro.html">here</a>. The pixel filter effect was achieved by overlaying
-                                <a href="/img/background-pixel.png">this 3×3 pixel image</a> with the CSS
-                                <code>darken</code> <code>mix-blend-mode</code> to effectively reduce the display
-                                resolution by a factor of nine, and was inspired by this
-                                <a href="https://fauux.neocities.org/">Serial Experiments Lain fan site</a>
-                                (warning: audio played immediately and has a flashing background).
-                            </li>
-                            <li>
-                                I have always liked tag systems for sorting large sets of items, and that was the
-                                inspiration for the <a href="/projects">projects page</a> search filter functionality.
-                                The page provides several filter settings that allow users to easily filter the list of
-                                displayed projects that contain or exclude the tags according to the buttons selected.
+                                <a href="https://containrrr.dev/watchtower/">Watchtower</a>, which are configured
+                                through <a href="https://docs.docker.com/compose/">Docker Compose</a>. As the setup here
+                                is identical to how <code>adepaul.dev</code> is set up, you can read more about how
+                                Cloudflare's CMS servers are used in the
+                                <a href="/projects/adepaul.dev">adepaul.dev write-up</a>.
                             </li>
                         </ul>
                     </li>
                 </ul>
+
+                <h2 id="planned">Upcoming Features</h2>
+
+                <p>
+                    Here are a few additional features planned for the poetry website:
+                </p>
+
+                <ul>
+                    <li>
+                        <b>Comment Sections</b>
+                        <ul>
+                            <li>
+                                Comment sections come with the additional hurdle of requiring moderation tools to ensure
+                                commenters cannot post anything harmful. The simplest solution would be to use a
+                                <a href="https://disqus.com/">Disqus</a> library, but after learning about data privacy
+                                concerns regarding the platform, I'd prefer to find something more privacy-focused or to
+                                implement something myself.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <b>Poem Books</b>
+                        <ul>
+                            <li>
+                                While the xkcd style of one poem per page is nice for simplicity, sometimes poems make
+                                more sense grouped into collections or "books". A directly requested feature, poem books
+                                would allow authors to group poems into separate collections according to theme, story,
+                                context, or relevance.
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
             </div>
         </div>
     </div>

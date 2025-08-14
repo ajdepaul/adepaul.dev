@@ -1,13 +1,13 @@
 {
-  "isPublished": false,
+  "isPublished": true,
   "articleLink": "projects/poetry-site",
   "title": "Poetry Site",
   "repositoryLink": "https://github.com/ajdepaul/poetry-site",
-  "imgSrc": "... TODO ...",
-  "imgAlt": "... TODO ...",
-  "publicationDate": "2023-04-10",
+  "imgSrc": "/img/poetry-site/screenshot.png",
+  "imgAlt": "Poetry website screenshot",
+  "publicationDate": "2025-08-14",
   "publicationDateHideDay": false,
-  "completionDate": "2023-01-19",
+  "completionDate": "2025-04-10",
   "completionDateHideDay": false,
   "technologies": [
     "Linux",
@@ -24,5 +24,5 @@
   "languages": [
     "TypeScript"
   ],
-  "summary": "... TODO ..."
+  "summary": "A place to share poems online anonymously."
 }
